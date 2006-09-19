@@ -1,0 +1,52 @@
+/* CSS Document */
+
+.Companyname {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #4E81D8;
+	font-size: 12px;
+}
+.address {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #4E81D8;
+	font-size: 11px;
+}
+.telephonenumber {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #4E81D8;
+	font-size: 11px;
+}
+.mobilephonenumber {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #4E81D8;
+	font-size: 11px;
+}
+.emailaddress {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #4E81D8;
+	font-size: 11px;
+}
+.emailaddress a{
+	text-decoration: none;
+	color: #4E81D8;
+}
+.emailaddress a:active{
+	text-decoration: none;
+}
+.emailaddress a:hover{
+	text-decoration: underline;
+}
+.emailaddress a:visited{
+	text-decoration: none;
+}
+.jobtitle {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #4E81D8;
+	font-size: 11px;
+}
+.name {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #4E81D8;
+	font-size: 12px;
+}
