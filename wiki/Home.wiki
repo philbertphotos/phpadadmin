@@ -1,5 +1,5 @@
 #labels Featured
 =php-AD-admin Wiki home=
 
-
+* [http://code.google.com/p/phpadadmin/wiki/PhpLdaps Setting up Active Directory for LDAPS connections]
 SelfServicePasswordGPO
