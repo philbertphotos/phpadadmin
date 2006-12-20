@@ -1,7 +1,7 @@
 #labels Featured
 =php-AD-admin Wiki home=
 
-  * [InstalLation Installation]
+||  * [InstalLation Installation] || hello ||
 
   * [http://code.google.com/p/phpadadmin/wiki/PhpLdaps Setting up Active Directory for LDAPS connections]
   * [http://code.google.com/p/phpadadmin/wiki/PhpLdaps Group Policy for self service password changes]
