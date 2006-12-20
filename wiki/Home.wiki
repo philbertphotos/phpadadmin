@@ -3,4 +3,4 @@
 
 *  [http://code.google.com/p/phpadadmin/wiki/PhpLdaps Setting up Active Directory for LDAPS connections]
 *  [http://code.google.com/p/phpadadmin/wiki/PhpLdaps Group Policy for self service password changes]
-*  ReLease0.4
+*  ReLease0_4
