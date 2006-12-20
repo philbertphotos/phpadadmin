@@ -12,3 +12,17 @@ include_path = ".;c:\php\includes"
 }}}
   * set cgi.force_redirect to 1 this is done by uncommenting the existing line ( Line 540 on current build ) 
     * So it reads: 
+{{{
+cgi.force_redirect = 1 
+}}}
+  * Enable the PHP Ldap module this is done by uncommenting the extension under the "Windows Extensions" ( Line 650 on current build) 
+     * So it Reads: 
+`extension=php_ldap.dll`
+  * Add the PHP directory to the windows path 
+    * right click My Computer on the server 
+    * Click the Advanced tab 
+    * Select PATH from the system variables section 
+    * Click Edit and add: 
+{{{
+C:\php; 
+}}}
