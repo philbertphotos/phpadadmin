@@ -26,3 +26,4 @@ cgi.force_redirect = 1
 {{{
 C:\php; 
 }}}
+note: this last point requires a server reboot which will be done in the next step. 
