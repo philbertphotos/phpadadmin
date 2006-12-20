@@ -1,0 +1,14 @@
+=Installation=
+
+==Step 1==
+
+  * Download from http://www.php.net/downloads.php 
+  * Unzip php directory to root of your C: drive 
+  * from the PHP directory copy the php.ini-reccommended to C:\windows direcotry and rename it to php.ini 
+  * Uncomment the windows include path under "Paths and Direcotries" ( Line 515 on current build ) 
+    * So it reads
+{{{
+include_path = ".;c:\php\includes"
+}}}
+  * set cgi.force_redirect to 1 this is done by uncommenting the existing line ( Line 540 on current build ) 
+    * So it reads: 
