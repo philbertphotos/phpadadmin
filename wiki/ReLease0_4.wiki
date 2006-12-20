@@ -1,0 +1,12 @@
+=Release 0.4=
+
+==Whats new==
+
+  * Fixed web config
+  * Added function to change user passwords
+
+==Whats To Follow==
+
+  * Implementation of Self Service Password changes
+  *  * This requires a DB of user questions and answers
+  
