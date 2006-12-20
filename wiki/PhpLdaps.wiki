@@ -1,4 +1,4 @@
-#labels Featured,LDAPS
+#labels LDAPS
 =Active Directory PHP LDAPS connection=
 
 I have been pulling my hair out trying to get, PHP to bind to Active Directory with Secure LDAP (LDAPS) on port 636.  This is in fact rediculously simple, so I can only assume everyone who's has worked this out doesn't want to share it with the rest of us!.
