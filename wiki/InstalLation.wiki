@@ -26,4 +26,44 @@ cgi.force_redirect = 1
 {{{
 C:\php; 
 }}}
-note: this last point requires a server reboot which will be done in the next step. 
+note: this last point requires a server reboot which will be done in the next step.
+
+==Step 2==
+
+  * Assumption here 
+    *IIS6 
+    *You are going to install php-AD-admin in the default website ( C:\inetpub\wwwroot\ ) 
+    *the php directory in the root of you C: Drive i.e. C:\php 
+  *Open Internet INformation Services (IIS) Manager 
+Expand the Web Service Extensions 
+Right click Web Service Extensions 
+Select Add a new Web Service extension 
+The new web service Extension window will appear 
+in Extension name enter PHP 
+In required files click add 
+then add the following path 
+C:\php\php5isapi.dll 
+click ok 
+check the box marked Set extension status to allowed 
+Expand the Default Web Site folder 
+Right click the Default Web Site 
+Select Properties 
+Select the Documents Tab 
+Click Add 
+Under Default content page: add index.php 
+click ok 
+Select the Home Directory Tab 
+Under Application settings Set Execute Permissions to Scripts Only 
+Under Application settings select configuration 
+Click Add 
+Next to Executable enter the following Path: 
+C:\php\php5isapi.dll 
+Next to extension enter .php 
+Click ok 
+Click ok 
+Select the Directory Security 
+Under Authentication and access control 
+Select Edit 
+make sure the only option selected is Integrated Windows authenication 
+Click ok 
+Click ok  
