@@ -1,6 +1,7 @@
 #labels Featured
 =php-AD-admin Wiki home=
 
+|| Documentation||
 ||  * [InstalLation Installation] || [FunCtions Function List] ||
 || ||[AdConnect adconnect()] ||
 
