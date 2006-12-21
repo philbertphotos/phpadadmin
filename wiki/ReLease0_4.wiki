@@ -2,11 +2,11 @@
 
 ==Whats new==
 
-  * Fixed web config
+  * Removed Web Config
   * Added function to change user passwords
 
 ==Whats To Follow==
 
   * Implementation of Self Service Password changes
-  *  * This requires a DB of user questions and answers
+  ** This requires a DB of user questions and answers
   
