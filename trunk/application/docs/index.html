@@ -1,0 +1,409 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>php-AD-admin Documentation</title>
+<link href="../Style/style320.css" rel="stylesheet" type="text/css" />
+<link href="../Style/tabber.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/tabber.js">
+</script>
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.style2 {
+	color: #00CC00;
+	font-weight: bold;
+}
+.style7 {color: #0000FF}
+.style8 {
+	color: #FF6600;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<table width="850" border="0" align="center" cellpadding="3" cellspacing="5">
+  <tr>
+    <td><table width="100%" border="0" cellpadding="5" cellspacing="0" bgcolor="#C5D1E1">
+      <tr>
+        <td bgcolor="#34487E"><a href="http://www.phpadadmin.com"><img src="../images/logo2.gif" width="179" height="36" border="0" /></a></td>
+      </tr>
+	  <tr>
+	    <td height="30" valign="middle" background="../images/tool-bkgd.gif">Installation for V0.321 </td>
+	  </tr>
+	  <tr>
+        <td valign="top">
+		<div class="tabber" id="tab1">
+		 <div class="tabbertab">
+		   <h2><a name="tab1">Step 1</a> - Install PHP </h2>
+			<table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="3">
+			  <tr>
+				<td><ul>
+				  <li>Download from <a href="http://www.php.net/downloads.php" target="_blank">http://www.php.net/downloads.php</a> </li>
+				  <li>Unzip php directory to root of your C: drive</li>
+				  <li>from the PHP directory copy the php.ini-reccommended to C:\windows direcotry and rename it to php.ini</li>
+				  <li>Uncomment the windows include path under &quot;Paths and Direcotries&quot; ( Line 515 on current build )
+				    <ul>
+                        <li>So it reads:</li>
+				      </ul>
+				    </li>
+				  </ul>
+				  <p><code>include_path = &quot;.;c:\php\includes&quot;</code> </p>
+				  <ul>
+                    <li>set cgi.force_redirect to 1 this	is done by uncommenting the existing line ( Line 540 on current build )
+                      <ul>
+                          <li>So it reads:</li>
+                      </ul>
+                    </li>
+				    </ul>
+				  <p><code>cgi.force_redirect = 1</code> </p>
+				  <ul>
+                    <li>Enable	the PHP Ldap module this is done by uncommenting the extension under the &quot;Windows Extensions&quot; ( Line 650 on current build)
+                      <ul>
+                          <li>So it Reads: </li>
+                      </ul>
+                    </li>
+				    </ul>
+				  <p><code>extension=php_ldap.dll</code> </p>
+				  <ul>
+                    <li>Add the PHP directory to the windows path
+                      <ul>
+                          <li>right click My Computer on the server</li>
+                        <li>Click the Advanced tab</li>
+                        <li>Select PATH from the system variables section</li>
+                        <li>Click Edit and add:</li>
+                      </ul>
+                    </li>
+				    </ul>
+				  <p><code>C:\php; </code></p>
+				  <ul>
+				    <li><em>note: this last point requires a server reboot which will be done in the next step. </em></li>
+				    </ul></td>
+			  </tr>
+			</table>
+
+		 </div>
+		 <div class="tabbertab">
+		   <h2><a name="tab1">Step 2</a> - Configure IIS to use PHP </h2>
+			<table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="3">
+			  <tr>
+				<td><ul>
+				  <li>Assumption here
+				    <ul>
+                        <li>IIS6</li>
+				      <li>You are going to install <a href="http://www.phpadadmin.com" target="_blank">php-AD-admin</a> in the default website ( C:\inetpub\wwwroot\ ) </li>
+				      <li>the php directory in the root of you C: Drive i.e. C:\php </li>
+				      </ul>
+				    </li>
+				  <li>Open Internet INformation Services (IIS) Manager</li>
+				  <li>Expand the <strong>Web Service Extensions </strong>
+                      <ul>
+                        <li>Right click <strong>Web Service Extensions</strong></li>
+                        <li>Select <strong>Add a new Web Service extension</strong></li>
+                        <li>The new web service Extension window will appear</li>
+                        <li>in Extension name enter PHP</li>
+                        <li>In required files click add</li>
+                        <li>then add the following path</li>
+                      </ul>
+				    <ul>
+                        <li><strong><code>C:\php\php5isapi.dll</code></strong></li>
+				      <li>click ok</li>
+				      <li>check the box marked <strong>Set extension status to allowed</strong> </li>
+				      </ul>
+				    </li>
+				  </ul>
+				  Expand the <strong>Default Web Site</strong> folder
+                  <ul>
+                    <li>Right click the <strong>Default Web Site</strong></li>
+                    <li>Select Properties </li>
+                    <li>Select the <strong>Documents</strong> Tab
+                      <ul>
+                          <li>Click Add</li>
+                        <li>Under Default content page: add <strong>index.php</strong></li>
+                        <li>click ok</li>
+                      </ul>
+                    </li>
+                    <li>Select the <strong>Home Directory</strong> Tab
+                      <ul>
+                          <li>Under Application settings Set Execute Permissions to <strong>Scripts Only</strong></li>
+                        <li>Under Application settings select configuration</li>
+                        <li>Click Add </li>
+                        <li>Next to Executable enter the following Path:</li>
+                        <li><code>C:\php\php5isapi.dll</code></li>
+                        <li>Next to extension enter <strong>.php</strong></li>
+                        <li>Click ok </li>
+                        <li>Click ok</li>
+                      </ul>
+                    </li>
+                    <li>Select the <strong>Directory  Security </strong>
+                        <ul>
+                          <li>Under Authentication and access control </li>
+                          <li>Select Edit</li>
+                          <li>make sure the only option selected is <strong>Integrated Windows authenication</strong></li>
+                          <li>Click ok </li>
+                        </ul>
+                    </li>
+                    <li>Click ok </li>
+                  </ul>
+                  </li>
+                  <div align="center"><img src="docimages/iis-auth.JPG" alt="iis auth" width="371" height="444" />
+                  </div>
+                  <ul>
+                    <li>Reboot your Server </li>
+                  </ul>
+                  </td>
+			  </tr>
+			</table>
+		 </div>
+		 <div class="tabbertab">
+		   <h2><a name="tab1">Step 3</a> - Install php-AD-admin </h2>
+			<table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="3">
+			  <tr>
+				<td><ul>
+				  <li>Download php-AD-admin from <a href="http://sourceforge.net/project/showfiles.php?group_id=176293" target="_blank">sourceforge </a></li>
+				  <li>Unzip the compressed package in to </li>
+				  <li>C:\Inetpub\wwwroot</li>
+				  <li>Open the phpadadmin class in a text editor </li>
+				  <li>edit the $domainconfig to be as per you settings </li>
+				  </ul>
+				<div class="tabber" id="singledomain">
+		 <div class="tabbertab">
+		   <h2><a name="single domain">Single Domain</a></h2>
+		   <p>To configure php-AD-admin to connect to your domain you need the following information:</p>
+		   <ul>
+		     <li>netbios name of your domain 
+		       <ul>
+		         <li>this can be found by logging to a PC and in the command prompt typing the following command</li>
+		       </ul>
+		     </li>
+		     </ul>
+<code>echo %userdomain%</code>
+			 <ul>
+			   <ul>
+			     <li>the netbios domain name should be in <strong>upper case</strong></li>
+			     <li>in the example below the netbios name has been set to <span class="style1">DOMAIN</span></li>
+			   </ul>
+			   <li>The full qualified domain name ( fqdn ) 
+			     <ul><li>this can be found by logging to a PC and in the command prompt typing the following command</li>
+			       </ul>
+			   </li>
+			   </ul>
+             <p><code>echo %userdnsdomain%</code>             </p>
+             <ul>
+               <ul>
+                 <li>the fqdn should be entered in <strong>lower case</strong></li>
+                 <li>in the example below the fqdn has been set to <span class="style2">domain.com </span></li>
+               </ul>
+               <li>A suitable user with read access to active directory
+                 <ul>
+                   <li>This user does not have to be a member of any administrative groups (just domain users is fine)</li>
+                   <li>in the example below the readuser has been set to <span class="style7"><strong>readusername</strong></span> </li>
+                 </ul>
+               </li>
+               <li>The password for the account above (note: if you havnt set the account pasword to never expire you may be changing this on a regular basis) 
+                 <ul>
+                   <li>in the example below the readusepassword has been set to <span class="style7"><strong>password</strong></span></li>
+                 </ul>
+               </li>
+               <li>A suitable user with write access to active directory
+                 <ul>
+                     <li>This is a user that will need to have rights to be able to create, edit and delete accounts in this domain. Typically this could be any user in the domain admins group (though not nessecarily) </li>
+                     <li>in the example below the readuser has been set to <span class="style8">readusername</span></li>
+                 </ul>
+               </li>
+               <li>The password for the account above (note: if you havnt set the account pasword to never expire you may be changing this on a regular basis) 
+                 <ul>
+                   <li>in the example below the readusepassword has been set to <span class="style8">password</span></li>
+                 </ul>
+               </li>
+               <li></li>
+             </ul>
+			 <p><b>Single Domain Example</b></p>
+             <pre>var $domainconfig=array("<span class="style1">DOMAIN</span>"=>array (	"fqdn"=>"<span class="style2">domain.com",</span>
+					"readuser" => <strong>"<span class="style7">readusername</span>",</strong>
+					"readuserpassword" => "<strong><span class="style7">password</span></strong>",
+					"writeuser" => "<span class="style8">writeuser</span>",
+					"writeuserpassword" => "<span class="style8">password</span>",
+					 ),);</pre>
+		 </div>
+		 		 <div class="tabbertab">
+		   <h2><a name="single domain">Multiple Domains</a></h2>
+		   <table border="0" cellspacing="0" cellpadding="3">
+           <tr>
+               <td><strong>2 Domain Example</strong></td>
+             </tr>
+             <tr>
+               <td>
+<pre>var $domainconfig=array("DOMAIN"=>array (	"fqdn"=>"domain.com",
+			"readuser" => "readuser",
+			"readuserpassword" => "password",
+			"writeuser" => "writeuser",
+			"writeuserpassword" => "password",
+			 ),
+			DOMAIN2"=>array (	"fqdn"=>"domain2.com",
+			"readuser" => "readuser",
+			"readuserpassword" => "password",
+			"writeuser" => "writeuser",
+			"writeuserpassword" => "password",
+							 ),);</pre>			   </td>
+             </tr>
+             <tr>
+               <td><strong>4 Domain Example</strong></td>
+             </tr>
+             <tr>
+               <td>
+<pre>var $domainconfig=array("DOMAIN"=>array (	"fqdn"=>"domain.com",
+			"readuser" => "readuser",
+			"readuserpassword" => "password",
+			"writeuser" => "writeuser",
+			"writeuserpassword" => "password",
+			 ),
+			DOMAIN2"=>array (	"fqdn"=>"domain2.com",
+			"readuser" => "readuser",
+			"readuserpassword" => "password",
+			"writeuser" => "writeuser",
+			"writeuserpassword" => "password",
+			 ),
+			DOMAIN3"=>array (	"fqdn"=>"domain3.com",
+			"readuser" => "readuser",
+			"readuserpassword" => "password",
+			"writeuser" => "writeuser",
+			"writeuserpassword" => "password",
+			 ),
+			DOMAIN4"=>array (	"fqdn"=>"domain4.com",
+			"readuser" => "readuser",
+			"readuserpassword" => "password",
+			"writeuser" => "writeuser",
+			"writeuserpassword" => "password",
+							 ),);</pre>			   </td>
+             </tr>
+           </table>
+		   		 </div>				</td>
+			  </tr>
+			</table>
+		 </div>
+		 <div class="tabbertab">
+		   <h2><a name="tab1">php-AD-admin Configuration</a></h2>
+			<table bgcolor="#FFFFFF" width="100%" border="0" cellspacing="0" cellpadding="3">
+			  <tr>
+				<td><p>The Config.csv located in the config directory is used to enable and disable features and select which fields you wish to enable your user to be able to edit.</p>
+		<div class="tabber" id="config">
+		 <div class="tabbertab">
+		   <h2><a name="config">User Edit</a></h2>
+		   <p>The user edit lines allow you to add an active directory atribute to the my Network settings page for a user to be able edit, or just view them. </p>
+		   <p>The order in which the fields are displayed is the same order that they appear in the CSV file. </p>
+		   <p>The User Edit lines have 9 feilds</p>
+		   <table width="100%" border="0" cellspacing="0" cellpadding="3">
+                    <tr>
+                      <th width="8%">Field No.</th>
+                      <th width="17%">Field Name</th>
+                      <th width="45%">Description</th>
+                      <th width="30%">usage</th>
+                    </tr>
+                    <tr>
+                      <td valign="top" bgcolor="#C5D1E1"><div align="center">1</div></td>
+                      <td valign="top" bgcolor="#C5D1E1">Function Type </td>
+                      <td valign="top" bgcolor="#C5D1E1">Used to identify what you configurting </td>
+                      <td valign="top" bgcolor="#C5D1E1">User Edit </td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><div align="center">2</div></td>
+                      <td valign="top">Freindly Name </td>
+                      <td valign="top">Name to display to the user </td>
+                      <td valign="top">Any name (no commas) </td>
+                    </tr>
+                    <tr>
+                      <td valign="top" bgcolor="#C5D1E1"><div align="center">3</div></td>
+                      <td valign="top" bgcolor="#C5D1E1">ID</td>
+                      <td valign="top" bgcolor="#C5D1E1">internal unique ID </td>
+                      <td valign="top" bgcolor="#C5D1E1">Any name (no spaces,no commas) </td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><div align="center">4</div></td>
+                      <td valign="top">Editable </td>
+                      <td valign="top">make field editable </td>
+                      <td valign="top"><p>Editable = TRUE<br />
+                        Read only = FALSE
+</p>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td valign="top" bgcolor="#C5D1E1"><div align="center">5</div></td>
+                      <td valign="top" bgcolor="#C5D1E1">not used yet </td>
+                      <td valign="top" bgcolor="#C5D1E1">Reserved for future use </td>
+                      <td valign="top" bgcolor="#C5D1E1">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><div align="center">6</div></td>
+                      <td valign="top">not used yet </td>
+                      <td valign="top">Reserved for future use </td>
+                      <td valign="top">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td valign="top" bgcolor="#C5D1E1"><div align="center">7</div></td>
+                      <td valign="top" bgcolor="#C5D1E1">Enable</td>
+                      <td valign="top" bgcolor="#C5D1E1">Enable the field (disabling will not display the field) </td>
+                      <td valign="top" bgcolor="#C5D1E1"><p>Enabled = TRUE<br />
+                        Disabled = FALSE</p>
+                        </td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><div align="center">8</div></td>
+                      <td valign="top">AD atribute </td>
+                      <td valign="top">the AD attribute you want to show or edit</td>
+                      <td valign="top"><p>e.g.<br /> 
+                          lastname = sn<br />
+                          firsname = givenname<br />
+                          job title = title</p>
+                        <p>etc.<br />
+                          note: must be all in lowercase
+                        </p></td>
+                    </tr>
+                    <tr>
+                      <td valign="top" bgcolor="#C5D1E1"><div align="center">9</div></td>
+                      <td valign="top" bgcolor="#C5D1E1">Form Type </td>
+                      <td valign="top" bgcolor="#C5D1E1">If Editable is set to TRUE, then how to display the field. Either as a free text form box or as a dropdown list </td>
+                      <td valign="top" bgcolor="#C5D1E1"><p>Text field = text<br />
+                        Dropdown = dropdown
+                      </p>
+                        </td>
+                    </tr>
+                  </table>
+		   <p>So an example entry for a to allow a User to be able to edit their ad description in a text field would be :</p>
+		   <p><code>User Edit,Description,description,TRUE,,,TRUE,description,text</code></p>
+		 </div>
+		   <div class="tabbertab">
+		   <h2><a name="config">Creating a Dropdown List</a></h2>
+		   <p>Adding a field to the User Edit section of  the config.csv and giving that field a form type of dropdown allows you to specify  a list of predetermined entries for the attribute you have specified. </p>
+		   <p> In this example we will added a drop down  list for the field department:</p>
+		   <p> Assuming the line doesn&rsquo;t already exist we  add a line to the config.csv </p>
+		     <p><code>User Edit,Department,description,TRUE,,,TRUE,department,dropdown</code></p>
+		   <p>This will get php-AD-admin to get a list of  entries from a csv file in the config/dropdowns directory with the same name as  the Active Directory Attribute (i.e. in this case department.csv).&nbsp; The contents of the file should have one  entry on each line and contain no commas.</p>
+		     <p>E.g. to add the entries&nbsp; accounts, personnel, IT and human resources  to a drop down list the file would look like this :<code></p>
+             <p>Accounts<br />
+               Personnel<br />
+               Information Technology<br />
+               Human Resources</code>             </p>
+             <p>note: Dropdown lists are currently sorted in alphabetical order automatically </p>
+		   </div>
+		   <div class="tabbertab">
+		   <h2><a name="config">functions</a></h2>
+		   <p>Functions allows you to disable and enable the other functions, all of which are work in progress, My Network Details is currently the only sections working fully. Though My Groups will display a list of the groups a use is currently a member of, though this is currently not especially helpful. </p>
+		   </div>
+		   		 <div class="tabbertab">
+		   <h2><a name="config">System</a></h2>
+           <p>System is currently only used to specify  which group can view the configuration pages.</p>
+           <p> The configuration pages are currently work  in progress, &nbsp;( as I broke it when  recoding the dropdowns etc J )</p>
+		   		 </div>
+
+		</td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>
