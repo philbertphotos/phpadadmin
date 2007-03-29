@@ -33,7 +33,7 @@ var $minanswerlength=3;
 var $domainconfig=array("DOMAIN"=>array (	"fqdn"=>"domain.com",
 											"readuser" => "ldapreaduser",
 											"readuserpassword" => "password",
-											"writeuser" => "ldapwriteuser",
+											"writeuser" => "administrator",
 											"writeuserpassword" => "password",
 						
 						 ),);
