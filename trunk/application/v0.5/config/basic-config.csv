@@ -1,0 +1,30 @@
+User Edit,Job Title,jobtitle,FALSE,,binary,TRUE,title,text
+User Edit,Telephone Number,telephonenumber,TRUE,,binary,TRUE,telephonenumber,text
+User Edit,Mobile Number,mobile,TRUE,,binary,TRUE,mobile,text
+User Edit,Fax Number,fax,TRUE,,binary,TRUE,facsimiletelephonenumber,text
+User Edit,Departments,Departments,TRUE,,binary,TRUE,department,dropdown
+User Edit,Company,company,FALSE,,binary,TRUE,company,text
+User Edit,Somthing Custom 1,extensionattribute1,TRUE,,binary,TRUE,extensionattribute1,text
+User Edit,Somthing Custom 2,extensionattribute2,TRUE,,binary,TRUE,extensionattribute2,text
+User Edit,Somthing Custom Readonly Field,extensionattribute3,FALSE,,binary,TRUE,extensionattribute3,text
+User Edit,Somthing Custom 4,extensionattribute4,TRUE,,binary,TRUE,extensionattribute4,text
+User Edit,Somthing Custom 5,extensionattribute5,TRUE,,binary,TRUE,extensionattribute5,text
+User Edit,Somthing Custom 6,extensionattribute6,TRUE,,binary,TRUE,extensionattribute6,text
+User Edit,Somthing Custom 7,extensionattribute7,TRUE,,binary,TRUE,extensionattribute7,text
+User Edit,Mobile Number,mobile,TRUE,,binary,TRUE,mobile,text
+User Edit,Mobile Number,mobile,TRUE,,binary,TRUE,mobile,text
+User Edit,Mobile Number,mobile,TRUE,,binary,TRUE,mobile,text
+User Edit,Mobile Number,mobile,TRUE,,binary,TRUE,mobile,text
+User Edit,Mobile Number,mobile,TRUE,,binary,TRUE,mobile,text
+Function,My Network Details,mynetworkdetails,TRUE,icon-contact.gif,binary
+Function,My Exchange,myexchange,FALSE,icon-msg-read.gif,binary
+Function,My Folders,myfolders,TRUE,icon-folder.gif,binary
+Function,My Groups,mygroups,TRUE,view-cdl.gif,binary
+Function,My Manager,mymanager,FALSE,addrbook.gif,binary
+Function,My Search,mysearch,FALSE,addrbook.gif,binary
+Function,Add User,adduser,FALSE,view-cdl.gif,binary
+System,Domain Admins,domainadmins,CN=Architecture|OU=groups|OU=Architecture|OU=Service Admin|DC=pht-master|DC=xports|DC=nhs|DC=uk,,text
+Departments,Information Technology,it,,,list
+Departments,Personel,personel,,,list
+Departments,Training,training,,,list
+Departments,Accounts,accounts,,,list
