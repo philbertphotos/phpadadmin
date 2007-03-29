@@ -96,6 +96,9 @@ if ( $result['1'] == $sqluser)
 			?><form id="addquestion" name="addquestion" method="post" action="">
 			  <table width="400px" align="center">
 					<tr>
+						<td colpan="2">Enter your new Question and Answer</td>
+					</tr>
+					<tr>
 						<th>Question</th>
 						<th>Answer</th>
 					<tr>
@@ -106,12 +109,15 @@ if ( $result['1'] == $sqluser)
 					<tr>
 						<td></td><td><input type="submit" name="add" value="add"></td>
 					</tr>
-			<?php
-				echo "Enter Your New Question and Answer";
-				echo "<br>";
-				echo "A question cannot be shorter than <b>".$phpadadmin->minquestionlength." characters</b> and";
+					<tr><td colspan="2">
+					<?php
+				echo "A question cannot be shorter than <b>".$phpadadmin->minquestionlength." characters</b> and ";
 				//echo "<br>";
-				echo "An answer cannot be shorter than <b>".$phpadadmin->minanswerlength." characters</b>";
+				echo "an answer cannot be shorter than <b>".$phpadadmin->minanswerlength." characters</b>";					
+					?>
+					</td>
+			<?php
+
 			}
 	} else {
 	$sql = 'INSERT INTO `users` (`index`, `samaccountname`) VALUES (NULL, \''.$sqluser.'\');';
