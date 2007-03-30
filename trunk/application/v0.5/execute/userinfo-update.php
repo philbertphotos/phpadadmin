@@ -12,6 +12,7 @@ $dn=$mynetworkdetails[0]['dn'];
 $phpadadmin->updateaccount2($update,$dn,$userinfo['domain'])
 ?>
 <center><a href="?">Your Details Have been Update</a></center>
+<pre><?php print_r($update) ?></pre>
 <?php } else { ?>
 <center>Nothing to process</center>
 <?php } ?>

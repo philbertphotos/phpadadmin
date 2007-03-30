@@ -12,7 +12,8 @@ $uid=$result['0'];
 if ( $result['1'] == $sqluser)
 	{
 		if (!isset($_GET['edit']) and !isset($_GET['save']) and !isset($_GET['delete']) and !isset($_GET['add']) and $_SERVER['REQUEST_METHOD'] != "POST"){	
-		?>
+
+		?> <!-- Display Questions !-->
 		<table width="400px" align="center">
 			<tr>
 				<th>Question</th>
@@ -20,20 +21,26 @@ if ( $result['1'] == $sqluser)
 				<th></th>
 			</tr>
 		<?php
-			$sql = 'SELECT  `index` , `question` , `answer` FROM `questions` WHERE `uid` = "'.$result['0'].'"';
+		$sql = 'SELECT  `index` , `question` , `answer` FROM `questions` WHERE `uid` = "'.$result['0'].'"';
 		$result = mysql_query($sql);
+		$i=0;
 		while ($questions = mysql_fetch_array($result))
 			{
-			echo "<tr><td>".$questions['question']."</td><td>***********</td><td><a href='index.php?page=mysecurityquestions&edit=".$questions['index']."'>edit</a></td><tr>";
+			$i++;
+			echo "<tr><td>".rtrim($phpadadmin->decrypttext($questions['question']))."</td><td>***********</td><td><a href='index.php?page=mysecurityquestions&edit=".$questions['index']."'>edit</a></td><tr>";
 			}
 		?>
 		<tr><td></td><td></td><td><a href='index.php?page=mysecurityquestions&add'>Add new</a></td>
 		</table>
 		<?php 
+		if ($i < $phpadadmin->minnumberofquestions)
+			{
+			echo "<center><b>You do not have enough questions to perform your own password resets";
+			echo "<br>the minimum number is ".$phpadadmin->minnumberofquestions."</b></center>";
+			}
 		}
 		if (isset($_GET['edit']) and $_SERVER['REQUEST_METHOD'] != "POST")
 			{
-		echo "yeah baby we're editing";
 		$sql = 'SELECT * FROM `questions` WHERE `index` = "'.$_GET['edit'].'" AND `uid` = "'.$uid.'"';
 		$result = mysql_query($sql);
 		$result = mysql_fetch_array($result);
@@ -46,7 +53,7 @@ if ( $result['1'] == $sqluser)
 				<th></th>
 			</tr>
 			<tr>
-				<td><input name="newquestion" type="text" value="<?php echo $result['question'] ?>"></td>
+				<td><input name="newquestion" type="text" value="<?php echo rtrim($phpadadmin->decrypttext($result['question'])) ?>"></td>
 				<td><input name="newanswer" type="password" value="<?php echo $result['answer'] ?>"></td>
 				<td><input type="submit" name="save" value="save"></td>
 				<td><input type="submit" name="delete" value="delete"></td>
@@ -62,9 +69,13 @@ if ( $result['1'] == $sqluser)
 				echo "The answer cannot be shorter than ".$phpadadmin->minanswerlength." characters";
 				echo $continue;
 				} else {
-					$sql = "INSERT INTO `questions` (`index`, `uid`, `question`, `answer`) VALUES (NULL, ".$uid.", '".$_POST['question']."', '".$_POST['answer']."');";
-					echo $sql;
+					$encryptquestion=$phpadadmin->encrypttext($_POST['question']);
+					$hashanswer=md5($_POST['answer']);
+					$sql = "INSERT INTO `questions` (`index`, `uid`, `question`, `answer`) VALUES (NULL, ".$uid.", '".$encryptquestion."', '".$hashanswer."');";
 					mysql_query($sql);
+					echo "Your Question has been added";
+					echo "<br>";
+					echo $continue;
 				}
 			}
 		if ($_SERVER['REQUEST_METHOD'] = "POST" and $_POST['save'] == "save" )
@@ -77,9 +88,10 @@ if ( $result['1'] == $sqluser)
 				echo "The answer cannot be shorter than ".$phpadadmin->minanswerlength." characters";
 				echo $continue;
 				} else {
-				$sql = "UPDATE `questions` SET `question` = '".$_POST['newquestion']."', `answer` = '".$_POST['newanswer']."' WHERE `questions`.`index` = ".$_GET['edit']." LIMIT 1;";
+				$cryptanswer=md5($_POST['newanswer']);
+				$sql = "UPDATE `questions` SET `question` = '".$phpadadmin->encrypttext($_POST['newquestion'])."', `answer` = '".$cryptanswer."' WHERE `questions`.`index` = ".$_GET['edit']." LIMIT 1;";
 				mysql_query($sql);
-				echo "<center>Saved<br>";
+				echo "Your question has been saved<br>";
 				echo $continue;
 				
 				}
@@ -91,7 +103,7 @@ if ( $result['1'] == $sqluser)
 				mysql_query($sql);
 				echo $continue;
 			}
-		if (isset($_GET['add']))
+		if (isset($_GET['add']) and !isset($_POST['add']))
 			{
 			?><form id="addquestion" name="addquestion" method="post" action="">
 			  <table width="400px" align="center">
@@ -122,7 +134,7 @@ if ( $result['1'] == $sqluser)
 	} else {
 	$sql = 'INSERT INTO `users` (`index`, `samaccountname`) VALUES (NULL, \''.$sqluser.'\');';
 	mysql_query($sql) or die("couldn't add user to db");
-	echo "<a href='".$_SERVER[URL]."'>Click here to continue</a>";
+	echo $continue;
 	exit;
 	}
 

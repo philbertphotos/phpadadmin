@@ -1,5 +1,5 @@
 <?php
-include('phpadadmin0.5.php');
+include('classes/phpadadmin0.5.php');
 $timeStart=gettimeofday();
 $timeStart_uS=$timeStart["usec"];
 $timeStart_S=$timeStart["sec"];
@@ -60,7 +60,7 @@ $mynetworkdetails=$phpadadmin->adquery("samaccountname",$userinfo['username'],$f
 <div id="menu-top"></div>
   <ul>
     <li>
-      &nbsp;<?php echo $mynetworkdetails[0]['givenname'][0]." ".$mynetworkdetails[0]['sn'][0]; ?></li>
+      &nbsp;<a href="."><?php echo $mynetworkdetails[0]['givenname'][0]." ".$mynetworkdetails[0]['sn'][0]; ?></a></li>
   </ul>
 <div id="menu">
 
@@ -90,23 +90,24 @@ foreach ($config['Function'] as $key => $value)
 	<tr>
       <td>
 			<?php
-			if (empty($_GET['page'])){ include('pages/mynetworkaccount.inc.php');} else {
+			if (empty($_GET['page'])){ include('pages/welcome.inc.php');} else {
 					switch ($_GET['page']) {
 					case "mynetworkaccount": include("pages/".$_GET['page'].".inc.php");  break;
 					case "mygroups": include("pages/".$_GET['page'].".inc.php"); break;
 					case "myexchange": include("pages/".$_GET['page'].".inc.php"); break;
 					case "mymanager": include("pages/".$_GET['page'].".inc.php"); break;
 					case "myfolders": include("pages/".$_GET['page'].".inc.php"); break;
-					case "mysearch": include("pages/".$_GET['page'].".inc.php"); break;
+					case "searchdirectory": include("pages/".$_GET['page'].".inc.php"); break;
 					case "config": include("pages/".$_GET['page'].".inc.php"); break;
 					case "adduser": include("pages/".$_GET['page'].".inc.php"); break;
 					case "help": include("pages/".$_GET['page'].".inc.php"); break;
+					case "setup": include("pages/".$_GET['page'].".inc.php"); break;
 					case "changemypassword": include("pages/".$_GET['page'].".inc.php"); break;
 					case "mysecurityquestions": include("pages/".$_GET['page'].".inc.php"); break;
 				 	case "userinfo-update": include('execute/userinfo-update.php'); break;
 					case "config-update": include('execute/config-update.php'); break;
 					case "adduser-update": include('execute/adduser-update.php'); break;
-					default: include("pages/mynetworkaccount.inc.php"); $pagetitle="Network Account";break;
+					default: include("pages/welcome.inc.php"); break;
 
 					}
 				}

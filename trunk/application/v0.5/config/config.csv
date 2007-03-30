@@ -18,7 +18,7 @@ User Edit,Somthing Custom 4,extensionattribute4,TRUE,,,TRUE,extensionattribute4,
 User Edit,Somthing Custom 5,extensionattribute5,TRUE,,,TRUE,extensionattribute5,text
 User Edit,Somthing Custom 6,extensionattribute6,TRUE,,,TRUE,extensionattribute6,text
 User Edit,Somthing Custom 7,extensionattribute7,TRUE,,,TRUE,extensionattribute7,text
-Function,My Network Details,mynetworkdetails,TRUE,icon-contact.gif,binary
+Function,My Network Account,mynetworkaccount,TRUE,icon-contact.gif,binary
 Function,Search the Directory,searchdirectory,TRUE,addrbook.gif,binary
 Function,Change My Password,changemypassword,TRUE,passwd_sml.gif,binary
 Function,My Security Questions,mysecurityquestions,TRUE,passwd_sml.gif,binary
