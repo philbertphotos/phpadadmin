@@ -231,9 +231,17 @@ var $version="0.5";
 	// $domain is the netbios name of the domain you wish to query
 	function adquery($searchfield,$searchtext,$field,$object,$domain)
 		{
+			if (empty($this->domainconfig['domaindn']))
+			   {
+					$domaindn=explode(".",$this->domainconfig[$domain]['fqdn']);
+					$domaindn=implode(",dc=",$domaindn);
+					$domaindn="DC=".$domaindn;
+			   } else {
+			   $domaindn=$phpadadmin->domaindn;
+			   }
 			$this->adconnect('r',$domain);
 			$filter = "(&(".$searchfield."=".$searchtext.")(objectclass=".$object."))";
-			$search = ldap_search($this->ad, $this->domainconfig[$domain]['domaindn'], $filter, $field)
+			$search = ldap_search($this->ad, $domaindn, $filter, $field)
 					  or die ("ldap search failed");
 			$info = ldap_get_entries($this->ad, $search);
 			return($info);
@@ -251,7 +259,15 @@ var $version="0.5";
 	function adquery2($filter,$field,$domain)
 		{
 			$this->adconnect('r',$domain);
-			$search = ldap_search($this->ad, $this->domainconfig[$domain]['domaindn'], $filter, $field)
+			if (empty($this->domainconfig['domaindn']))
+			   {
+					$domaindn=explode(".",$this->domainconfig[$domain]['fqdn']);
+					$domaindn=implode(",dc=",$domaindn);
+					$domaindn="DC=".$domaindn;
+			   } else {
+			   $domaindn=$phpadadmin->domaindn;
+			   }
+			$search = ldap_search($this->ad, $domaindn, $filter, $field)
 					  or die ("ldap search failed");
 			$info = ldap_get_entries($this->ad, $search);
 			return($info);

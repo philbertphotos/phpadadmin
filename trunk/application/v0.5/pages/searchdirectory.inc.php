@@ -54,18 +54,38 @@
 <?php } 
 if ($_SERVER['REQUEST_METHOD'] == "POST" && $_POST['search'] == "Search")
 	{
-	echo "were searching baby!<br>";
-	
-	$filter='(&(sn="'.$_POST['sn'].'")(givenname="'.$_POST['givenname'].'"))';
-	echo $filter;
-	$field=array("sn","givenname");
+	$filter='(&(sn='.$_POST['sn'].'*)(givenname='.$_POST['givenname'].'*))';
+	$field=array("sn","givenname","displayname","office","department","mobile","telephonenumber");
 	$output=$phpadadmin->adquery2($filter,$field,$_POST['domain']);
 	
-	echo "dn= ".$phpadadmin->domainconfig[$domain]['domaindn'];
-	
+	?>
+	<table width="100%">
+		<tr>
+			<th>First name</th>
+			<th>Last name</th>
+			<th>Telephone number</th>
+			<th>Mobile number</th>
+			<th>Office</th>
+			<th>Department</th>
+		</tr>
+		
+	<?php
+	$color1="#FFFFFF";
+	$color2="#C5D1E1";
+	for($i = 0; $i < count($output); $i++) 
+		{
+		$row_color = ($i % 2) ? $color2 : $color1; 
+		echo "<tr>\n";
+		echo "	<td bgcolor=".$row_color.">".$output[$i]['givenname']['0']."</td>\n";
+		echo "	<td bgcolor=".$row_color.">".$output[$i]['sn']['0']."</td>\n";
+		echo "	<td bgcolor=".$row_color.">".$output[$i]['telephonenumber']['0']."</td>\n";
+		echo "	<td bgcolor=".$row_color.">".$output[$i]['mobile']['0']."</td>\n";
+		echo "	<td bgcolor=".$row_color.">".$output[$i]['office']['0']."</td>\n";
+		echo "	<td bgcolor=".$row_color.">".$output[$i]['department']['0']."</td>\n";
+		echo "</tr>\n";
+		}
+
 	}
-
-
 
 ?>
 
