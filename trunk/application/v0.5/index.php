@@ -1,9 +1,11 @@
 <?php
 include('classes/phpadadmin0.5.php');
+
 $timeStart=gettimeofday();
 $timeStart_uS=$timeStart["usec"];
 $timeStart_S=$timeStart["sec"];
 $phpadadmin=new phpadadmin;
+$phpadadmin->setvars();
 if ($phpadadmin->logging = true) { $phpadadmin->log(); }
 $userinfo=$phpadadmin->getuser();
 $configfile='config/config.csv';
@@ -50,7 +52,13 @@ $mynetworkdetails=$phpadadmin->adquery("samaccountname",$userinfo['username'],$f
 <div id="topmenu"><div id="topmenu-block-help">
 <table>
 <tr valign="middle">
-<td><img src="images/icons/help.gif" width="16" height="16" />
+<?php 
+if (strtolower($userinfo['username']) == strtolower($phpadadmin->configusername)) { 
+	?><td><a href="?page=setup">Setup</a><?php
+	}
+	?>
+</td>
+<td><img src="images/icons/help.gif" width="16" height="16" /></td>
 </tr></table>
 </div>
 <div id="topmenu-block"></div>

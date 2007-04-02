@@ -18,20 +18,6 @@ if (!function_exists('mcrypt_get_iv_size')) {
 class phpadadmin
 {
 //  Configuration starts here
-
-var $logging=false;
-
-//  Required is using the changepassword Function
-//  You must be able to connect to Active Directory by LDAPS ( secure ldap ) 
-//  In order to change password.
-
-var $ldaps=true;  // enable secure ldap more info at http://wiki.phpadadmin.com/index.php?title=Settingup_phpadadmin_to_use_LDAPS
-var $minpwdlength=7;
-var $minquestionlength=10; // min length of the question in chars
-var $minanswerlength=3; //min length of the answer in chars
-var $minnumberofquestions=4; //min number of questions so several can be selected at random
-var $encryptionkey="this is a secret key"; // this key is used to encrypt your Questions once it is set you cannot change it! 
-
 // Domain Configuration
 
 var $domainconfig=array("DOMAIN"=>array (	"fqdn"=>"domain.com",
@@ -54,7 +40,7 @@ var $domainconfig=array("DOMAIN"=>array (	"fqdn"=>"domain.com",
 // Note:  This username is Case sensitive.  If you unsure the user name is shown as phpadadmin
 //        sees it under My Network Account at the bottom.
 
-var $configusername="administrator";
+//var $configusername="administrator";
 
 var $dbconnect = array(	"host" => "localhost",
 						"dbname" => "phpadadmin",
@@ -64,10 +50,34 @@ var $dbconnect = array(	"host" => "localhost",
 	
 //  No more editing required
 var $domaindn="";
-var $version="0.5";
+
 
 	//dbconnect 
 	// this is to access & update the stored security questions
+	function getvars()
+		{
+		$this->dbconnect();
+		$sql = 'SELECT * FROM `config`';
+		$result = mysql_query($sql);
+		while ($vars = mysql_fetch_array($result))
+			{
+			$ouput[$vars['name']]=$vars['value'];
+			}
+		return($ouput);
+		}
+	function setvars()
+		{
+		$vars=$this->getvars();
+		$this->logging=$vars['logging'];
+		$this->ldaps=$vars['ldaps'];
+		$this->minpwdlength=$vars['minpwdlength'];
+		$this->minquestionlength=$vars['minquestionlength'];
+		$this->minanswerlength=$vars['minanswerlength'];
+		$this->minnumberofquestions=$vars['minnumberofquestions'];
+		$this->encryptionkey=$vars['encryptionkey'];
+		$this->configusername=$vars['configuser'];
+		$this->version=$vars['version'];
+		}
 	function  dbconnect() 
 		{
 		$link = mysql_connect($this->dbconnect['host'], $this->dbconnect['dbuname'], $this->dbconnect['dbpword']);
