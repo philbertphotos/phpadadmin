@@ -1,0 +1,229 @@
+html {margin: 0; padding: 0;}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, Arial;
+	font-size: 80%;
+	background-color: #34487E;
+}
+            /*** Image is 180px wide, and 20px high ***/
+
+pre {margin: 0; font-family: verdana, sans-serif; font-size: .9em;}
+
+.alignright {margin-top: 0; text-align: right;}
+
+.small {font-size: .9em;}
+
+.username-domain {
+	position: absolute;
+	top: 0;
+	right: 0;
+	text-align: right;
+	vertical-align: middle;
+	padding-top: 10px;
+	padding-right: 3px;
+	width: auto;
+	color: #FFFFFF;
+}
+img.valign {
+	vertical-align:middle;
+	}
+#leftbox {      /*** No side padding or borders, to avoid the IE5.x box model problem ***/
+	position: absolute;
+	left: 3px;
+	width: 188px;
+	color: #000000;
+	background-color: #FFFFFF;
+	padding-top: 3px;
+	padding-left: -5px;
+	padding-bottom: 5px;
+	border: 3px solid #C5D1E1;
+}
+#leftbox li {
+	list-style-image: url(images/icons/icon-folder.gif);
+	margin-left: -10px;
+}
+
+
+#menu {
+	margin: 0px;
+	padding: 0px;
+}
+#menu h2 {
+display: block; 
+background-image: url(../images/tool-bkgd.gif);
+background-color:#CFCFDC;
+font-size: 90%; 
+padding: 3px 0 5px 3px;
+color: #333333;
+margin: 0px;
+}
+#menu ul{
+list-style: none;
+margin: 0px 0px 3px 0px;
+padding: 5px 0px 0px 0px;
+border: none;
+}
+#menu ul li {
+margin: 0px;
+padding: 0px;
+width:100%;
+}
+#menu ul li a {
+font-size: 80%;
+display: block;
+padding: 5px 5px 5px 5px;
+text-decoration: none;
+color: #666666;
+}
+#menu ul li a:hover, #menu ul li a:focus {
+color: #000000;
+background-color: #eeeeee;
+}
+#menu a {
+	font-family: Tahoma, Arial;
+	font-size: 11px;
+	color: #000000;
+	text-decoration: none;
+}
+#menu a:hover {
+	text-decoration: underline;
+}
+#menu a:active {
+	font-weight: bold;
+}
+#menu a:visited {
+}
+#middlebox {
+	padding: 3px;
+	background-color: #C5D1E1;     /*** This div has a background to cover the 2-tone body BG ***/
+	margin-top: 0;
+	margin-right: 0%;
+	margin-bottom: 0;
+	margin-left: 200px;
+	border-right-style: solid;
+	border-right-color: #34487E;
+	border-right-width: 3px;
+}
+#middlebox img {
+	align: right;
+}
+#middlebox h1 {
+	font-size: 14px;
+	padding-top: -20px;
+	padding-right: 2px;
+}
+#topmenu {
+	background-image: url(../images/tool-bkgd.gif);
+	height: 32px;
+	border-right-width: 3px;
+	border-bottom-width: 3px;
+	border-left-width: 3px;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #34487E;
+	border-right-color: #34487E;
+	border-bottom-color: #34487E;
+	border-left-color: #34487E;
+}
+#menu-bottom {
+	background-image: url(images/nb-hide-ql.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 8px;
+}
+#menu-top {
+	background-image: url(images/nb-show-ql.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 8px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: -20px;
+	margin-left: 0px;
+}
+#topmenu-block {
+	width: 194px;
+	border-right-width: 3px;
+	border-right-style: solid;
+	border-right-color: #34487E;
+	height: 32px;
+}
+#footer {
+	margin-top: 5px;
+	background-color: #FFFFFF;
+	padding: 3px;
+	font-size: 9px;
+	text-align: center;
+}
+#pagecontent {
+	background-color: #FFFFFF;
+	padding: 3px;
+	margin-bottom:3px;
+}
+
+#topmenu-block-help {
+	height: 22px;
+	float: right;
+	clear: both;
+	font-family: Tahoma, Arial;
+	font-size: 14px;
+	padding-top: 5px;
+	padding-right: 10px;
+	padding-bottom: 5px;
+	vertical-align: middle;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+#topmenu-block-help a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#topmenu-block-help a:visited {
+}
+#topmenu-block-help a:hover {
+	text-decoration:underline
+}
+#topmenu-block-help a:active {
+}
+th {
+	height: 26px;
+	background-image: url(../../v0.313/images/nb-sel-bkgd.gif);
+}
+#credits
+{
+	position: absolute;
+	left: auto;
+	bottom: 15px;
+	right: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	text-align: center;
+	width: 100%;
+	font-size: 9px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #CFCFDC;
+	clear: both;
+	height: 15px;
+}
+#credits a {
+	color: #000000;
+	text-decoration: none;
+}
+#credits a:visited {
+}
+#credits a:active {
+}
+#credits a:hover {
+}#middlebox h2 {
+
+	font-size: 13px;
+	padding-top: -20px;
+	padding-right: 2px;
+}
+code {
+	margin-left: 20px;
+	font-size: 12px;
+}
