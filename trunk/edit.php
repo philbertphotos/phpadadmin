@@ -27,7 +27,7 @@
  <?php $i=0; foreach ($attrs as $attr) { ?>
  <form name="<?php echo $attr['attr'] ?>-form" action="updateattrs.php" method="post">
  <tr <?php if($i % 2) { ?>bgcolor="lightgrey"<?php } ?>>
-    <td><input type="text" name="displayattr" value="<?php echo $attr['displayattr'] ?>"></td>
+    <td><input type="text" name="displayattr" value="<?php echo htmlentities($attr['displayattr']) ?>"></td>
     <td><?php echo $attr['attr'] ?></td>
     <td><input type="checkbox" name="uservisable" value="<?php echo $attr['uservisable'] ?>" <?php if ($attr['uservisable']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
     <td><input type="checkbox" name="required" value="<?php echo $attr['required'] ?>" <?php if ($attr['required']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
@@ -44,7 +44,7 @@
         <?php } ?> 
        </SELECT>
     </td>
-    <td><input type="text" name="options" value="<?php echo $attr['options'] ?>"></td>
+    <td><input type="text" name="options" value="<?php echo htmlentities($attr['options']) ?>"></td>
     <td>
  <?php
    $validationtypes= _dbquery('SELECT * FROM '.$db_database.'.validationtype',MYSQL_ASSOC,false);                   
@@ -55,7 +55,7 @@
         <?php } ?> 
        </SELECT>
     </td>
-    <td><input type="text" name="desc" value="<?php echo $attr['desc'] ?>"></td>
+    <td><input type="text" name="desc" value="<?php echo htmlentities($attr['desc']) ?>"></td>
     <input type="hidden" name="id" value="<?php echo $attr['id'] ?>">
     <td><input  size="3" type="text" name="order" value="<?php echo $attr['order'] ?>"></td> 
     <td><input class="required validate-digits" name="<?php echo $attr['attr'] ?>-submit" type="submit" value="Update" /></td>

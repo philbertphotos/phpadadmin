@@ -2,6 +2,7 @@
 require_once('config.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+      echo mysql_escape_string($_POST['options']);
         if (isset($_POST['useredit'])) { $useredit='TRUE'; } else { $useredit='FALSE'; }
         if (isset($_POST['required'])) { $required='TRUE'; } else { $required='FALSE'; }
         if (isset($_POST['manageredit'])) { $manageredit='TRUE'; } else { $manageredit='FALSE'; }
@@ -14,22 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         `required` = \''.$required.'\',  
         `search` = \''.$search.'\',  
         `uservisable` = \''.$uservisable.'\',  
-        `options` =  \''.$_POST['options'].'\',
+        `options` =  \''.mysql_escape_string($_POST['options']).'\',
         `formtype` =  \''.$_POST['formtype'].'\',
-        `displayattr` =  \''.$_POST['displayattr'].'\',
+        `displayattr` =  \''.mysql_escape_string($_POST['displayattr']).'\',
         `validation` =  \''.$_POST['validation'].'\',
         `order` =  \''.$_POST['order'].'\',
-        `desc` =  \''.$_POST['desc'].'\' 
+        `desc` =  \''.mysql_escape_string($_POST['desc']).'\' 
         WHERE  `attributes`.`id` ='.$_POST['id'].' LIMIT 1 ;';
         echo $sql;
-       _dbupdate($sql); 
-?>
-     UPDATING
-<?php   
-    }
-    
+       _dbupdate($sql);    
+    }    
 header('Location: '.PATH.'edit.php' );
- 
-?><pre>
-      <?php print_r($_POST); ?>
-</pre>
