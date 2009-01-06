@@ -267,6 +267,13 @@ Validation.addAllThese([
                 // [$].##
                 return Validation.get('IsEmpty').test(v) ||  /^\$?\-?([1-9]{1}[0-9]{0,2}(\,[0-9]{3})*(\.[0-9]{0,2})?|[1-9]{1}\d*(\.[0-9]{0,2})?|0(\.[0-9]{0,2})?|(\.[0-9]{1,2})?)$/.test(v)
             }],
+    ['validate-currency-sterling', 'Please enter a valid £ amount. For example £100.00 .', function(v) {
+                // [£]1[##][,###]+[.##]
+                // [£]1###+[.##]
+                // [£]0.##
+                // [£].##
+                return Validation.get('IsEmpty').test(v) ||  /^\$?\-?([1-9]{1}[0-9]{0,2}(\,[0-9]{3})*(\.[0-9]{0,2})?|[1-9]{1}\d*(\.[0-9]{0,2})?|0(\.[0-9]{0,2})?|(\.[0-9]{1,2})?)$/.test(v)
+            }],
     ['validate-selection', 'Please make a selection', function(v,elm){
                 return elm.options ? elm.selectedIndex > 0 : !Validation.get('IsEmpty').test(v);
             }],

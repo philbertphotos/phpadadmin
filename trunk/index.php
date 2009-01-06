@@ -7,7 +7,8 @@
   
   include ('menu.php') ;
   ?>
-<div class="panel" id="home">  
+<div class="panel" id="home">
+<form id="test" action="#" method="get">    
  <fieldset>  <legend>Update your user attributes</legend> 
  <?php $i=0; foreach ($attrs as $attr) { ?>
 
