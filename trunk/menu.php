@@ -1,4 +1,11 @@
-<ul>
-    <li><a href="<?php echo PATH ?>">home</a></li>
-    <li><a href="<?php echo PATH ?>edit.php">edit attributes</a></li>
-</ul>
+<div id="mainmenu"> 
+    <ul id="tabs"> 
+        <li> 
+            <a href="#home">Home</a> 
+        </li> 
+        <li> 
+            <a href="#search">Search</a> 
+        </li>  
+    </ul> 
+<div>
+<div class="bar">&nbsp;</div> 

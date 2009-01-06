@@ -7,10 +7,8 @@
   
   include ('menu.php') ;
   ?>
-  
-<form id="test" action="#" method="get">  
-<legend>Update your user attributes</legend>
- <fieldset> 
+<div class="panel" id="home">  
+ <fieldset>  <legend>Update your user attributes</legend> 
  <?php $i=0; foreach ($attrs as $attr) { ?>
 
  <?php 
@@ -18,7 +16,7 @@
     case "text": ?>
     <div class="form-row"> 
    <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div>
-   <div class="field-widget"><input name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>" /></div>
+   <div class="field-widget"><input name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>" /> <em><?php echo $attr['desc'] ?></em></div>
    </div>
    <?php break; 
    case "dropdown":
@@ -93,4 +91,8 @@
                             }]
                         ]);
                     </script>  
+</div>
+<div class="panel" id="search"> 
+Search and stuff
+</div>
  <?php include('footer.php'); ?>

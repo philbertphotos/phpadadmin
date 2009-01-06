@@ -25,4 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo $sql;
        _dbupdate($sql);    
     }    
-header('Location: '.PATH.'edit.php' );
+header('Location: '.PATH.'admin.php#'.$_POST['attr'] );
