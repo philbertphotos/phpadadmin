@@ -14,6 +14,7 @@
     <th>Attribute</th>
     <th>in AD</th>
     <th>User Visble</th>
+    <th>Required?</th>
     <th>User Edit</th>
     <th>Manager Edit</th>
     <th>searchable</th>
@@ -29,6 +30,7 @@
     <td><input type="text" name="displayattr" value="<?php echo $attr['displayattr'] ?>"></td>
     <td><?php echo $attr['attr'] ?></td>
     <td><input type="checkbox" name="uservisable" value="<?php echo $attr['uservisable'] ?>" <?php if ($attr['uservisable']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
+    <td><input type="checkbox" name="required" value="<?php echo $attr['required'] ?>" <?php if ($attr['required']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
     <td><input type="checkbox" name="useredit" value="<?php echo $attr['useredit'] ?>" <?php if ($attr['useredit']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
     <td><input type="checkbox" name="manageredit" value="<?php echo $attr['manageredit'] ?>" <?php if ($attr['manageredit']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
     <td><input type="checkbox" name="search" value="<?php echo $attr['search'] ?>" <?php if ($attr['search']== 'TRUE') { ?>checked="YES" <?php } ?>></td>
@@ -56,7 +58,7 @@
     <td><input type="text" name="desc" value="<?php echo $attr['desc'] ?>"></td>
     <input type="hidden" name="id" value="<?php echo $attr['id'] ?>">
     <td><input  size="3" type="text" name="order" value="<?php echo $attr['order'] ?>"></td> 
-    <td><input name="<?php echo $attr['attr'] ?>-submit" type="submit" value="Update" /></td>
+    <td><input class="required validate-digits" name="<?php echo $attr['attr'] ?>-submit" type="submit" value="Update" /></td>
  </tr>
  </form>
  <?php $i++; } ?>

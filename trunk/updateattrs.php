@@ -3,6 +3,7 @@ require_once('config.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         if (isset($_POST['useredit'])) { $useredit='TRUE'; } else { $useredit='FALSE'; }
+        if (isset($_POST['required'])) { $required='TRUE'; } else { $required='FALSE'; }
         if (isset($_POST['manageredit'])) { $manageredit='TRUE'; } else { $manageredit='FALSE'; }
         if (isset($_POST['search'])) { $search='TRUE'; } else { $search='FALSE'; }
         if (isset($_POST['uservisable'])) { $uservisable='TRUE'; } else { $uservisable='FALSE'; }
@@ -10,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         UPDATE  `'.$db_database.'`.`attributes` SET
         `useredit` = \''.$useredit.'\',  
         `manageredit` = \''.$manageredit.'\',  
+        `required` = \''.$required.'\',  
         `search` = \''.$search.'\',  
         `uservisable` = \''.$uservisable.'\',  
         `options` =  \''.$_POST['options'].'\',
@@ -25,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
      UPDATING
 <?php   
     }
-    header('Location: '.PATH.'edit.php' );
+    
+header('Location: '.PATH.'edit.php' );
  
 ?><pre>
       <?php print_r($_POST); ?>
