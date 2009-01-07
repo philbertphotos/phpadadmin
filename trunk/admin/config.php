@@ -12,12 +12,14 @@ include (INSTALLPATH.'header.php');
 <div>
 <div class="bar">&nbsp;</div>
 <?php
-function _phpadadmin_config_panel($sql,$name)
-    { ?>
+function _phpadadmin_config_panel($name)
+    { 
+     global $db_database;   
+        ?>
     <div class="panel" id="<?php echo $name ?>">
     <fieldset><legend><?php echo $name ?> config</legend> 
     <form name="<?php echo $name ?>" action="" method="post">
-    <?php $configs = _dbquery($sql,MYSQL_ASSOC) ?>
+    <?php $configs = _dbquery('SELECT * FROM '.$db_database.'.config WHERE type=\''.$name.'\';',MYSQL_ASSOC) ?>
     <?php foreach($configs as $config) { ?>
      <div class="form-row">
       <div class="field-label"><label for="<?php echo $config['name'] ?>"><?php echo $config['name'] ?></label>:</div> 
@@ -33,8 +35,8 @@ function _phpadadmin_config_panel($sql,$name)
     </script> 
 <?php } ?>
 
-<?php _phpadadmin_config_panel('SELECT * FROM '.$db_database.'.config WHERE type=\'domain\';','ldap') ?>
-<?php _phpadadmin_config_panel('SELECT * FROM '.$db_database.'.config WHERE type=\'password\';','selfservice') ?>
-<?php _phpadadmin_config_panel('SELECT * FROM '.$db_database.'.config WHERE type=\'phpadadmin\';','phpadadmin') ?>
+<?php _phpadadmin_config_panel('ldap') ?>
+<?php _phpadadmin_config_panel('selfservice') ?>
+<?php _phpadadmin_config_panel('phpadadmin') ?>
 
 <?php include (INSTALLPATH.'footer.php');?>
