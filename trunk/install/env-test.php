@@ -35,7 +35,9 @@ body {
  <div class="test <?php if (!function_exists('ldap_connect')) { $test='Fail'; ?>fail<?php } ?>">
            php ldap module =  <?php if (function_exists('ldap_connect')) {?>Success<?php } else { ?>Fail!<?php } ?>
  </div>
-  
+ <div class="test <?php if (!function_exists('mysql_connect')) { $test='Fail'; ?>fail<?php } ?>">
+           php mysql module =  <?php if (function_exists('mysql_connect')) {?>Success<?php } else { ?>Fail!<?php } ?>
+ </div>  
  
 
 </div>

@@ -1,9 +1,7 @@
 <?php
- require_once('config.php');
- 
-  $attrs = _dbquery('SELECT * FROM phpadadmin.attributes',MYSQL_ASSOC,false)    ;
- // $smarty->assign('pagetitle', 'testing');
-include ('header.php'); 
+require_once('../config.php'); 
+$attrs = _dbquery('SELECT * FROM phpadadmin.attributes',MYSQL_ASSOC,false)    ;
+include (INSTALLPATH.'header.php');
 ?> 
 <div id="mainmenu"> 
     <ul id="tabs">
@@ -104,4 +102,4 @@ include ('header.php');
                       </script>
  <?php $i++; } ?>
 
-<?php include ('footer.php');   ?>
+<?php include (INSTALLPATH.'footer.php');   ?>

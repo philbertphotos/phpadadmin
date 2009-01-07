@@ -1,6 +1,6 @@
 <?php
   require_once('config.php');
-        $sql='SELECT * FROM phpadadmin.attributes WHERE uservisable = \'TRUE\' ORDER BY `order`;';
+        $sql='SELECT * FROM '.$db_database.'.attributes WHERE uservisable = \'TRUE\' ORDER BY `order`;';
   $attrs = _dbquery($sql,MYSQL_ASSOC)    ;
 
   include ('header.php');

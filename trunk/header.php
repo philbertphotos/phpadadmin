@@ -7,7 +7,8 @@
         <script src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js" type="text/javascript"></script> 
         <script src="<?php echo PATH ?>thirdparty/validate.js" type="text/javascript"></script>
         <script src="<?php echo PATH ?>thirdparty/fabtabulous.js" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo PATH ?>style.css" />
 </head>
 <body>
 <div id="wrapper">
+<?php include ('adminmenu.php'); ?>

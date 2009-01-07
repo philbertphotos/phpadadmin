@@ -1,4 +1,7 @@
 <?php
+if (!function_exists('mysql_connect')) {
+       header('Location: '.PATH.'install/env-test.php' );       
+        }
 /*############ My SQL Functions  ###############*/
 
 function  _dbconnect() 

@@ -3,10 +3,10 @@ if (!function_exists('mcrypt_get_iv_size')) {
        header('Location: '.PATH.'install/env-test.php' );       
         }
 
-function encrypttext($input)
+function encrypttext($input,$cryptkey)
         {
             $td = mcrypt_module_open('des', '', 'ecb', '');
-            $key = substr($this->encryptionkey, 0, mcrypt_enc_get_key_size($td));
+            $key = substr($cryptkey, 0, mcrypt_enc_get_key_size($td));
             $iv_size = mcrypt_enc_get_iv_size($td);
             $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
                 
@@ -21,10 +21,10 @@ function encrypttext($input)
                 
                 return($encrypted);
         }
-function decrypttext($encrypted)
+function decrypttext($encrypted,$cryptkey)
         {
             $td = mcrypt_module_open('des', '', 'ecb', '');
-            $key = substr($this->encryptionkey, 0, mcrypt_enc_get_key_size($td));
+            $key = substr($cryptkey, 0, mcrypt_enc_get_key_size($td));
             $iv_size = mcrypt_enc_get_iv_size($td);
             $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
                 

@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../config.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       echo mysql_escape_string($_POST['options']);
@@ -25,4 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo $sql;
        _dbupdate($sql);    
     }    
-header('Location: '.PATH.'admin.php#'.$_POST['attr'] );
+header('Location: '.PATH.'admin/attributes.php#'.$_POST['attr'] );
