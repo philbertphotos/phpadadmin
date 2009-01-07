@@ -7,6 +7,23 @@
   
   include ('menu.php') ;
   ?>
+<div id="mainmenu"> 
+    <ul id="tabs"> 
+        <li> 
+            <a href="#home">Home</a> 
+        </li> 
+        <li> 
+            <a href="#search">Search</a> 
+        </li>
+        <li> 
+            <a href="#questions">My Security Questions</a> 
+        </li>  
+    </ul> 
+<div>
+<div class="bar">&nbsp;</div>   
+  
+  
+  
 <div class="panel" id="home">
 <form id="test" action="#" method="get">    
  <fieldset>  <legend>Update your user attributes</legend> 
@@ -95,5 +112,8 @@
 </div>
 <div class="panel" id="search"> 
 Search and stuff
+</div>
+<div class="panel" id="questions"> 
+Questions
 </div>
  <?php include('footer.php'); ?>
