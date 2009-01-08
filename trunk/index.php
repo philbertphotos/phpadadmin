@@ -32,7 +32,7 @@
     case "text": ?>
     <div class="form-row"> 
    <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div>
-   <div class="field-widget"><input name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>" /> <em><?php echo $attr['desc'] ?></em></div>
+   <div class="field-widget"><input name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>"  <?php if ($_userinfo[0][$attr['attr']][0]) { ?>value="<?php echo $_userinfo[0][$attr['attr']][0] ?>"<?php } ?>/> <em><?php echo $attr['desc'] ?></em></div>
    </div>
    <?php break; 
    case "dropdown":

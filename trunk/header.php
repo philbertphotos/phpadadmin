@@ -16,3 +16,4 @@
 </div>
 <?php include ('menu.php'); ?>
 <div id=content>
+<h4><?php echo $_userinfo[0]['givenname'][0] ?> <?php echo $_userinfo[0]['sn'][0] ?></h4>

@@ -11,5 +11,6 @@ require_once('functions/loadfunctions.php');
 
 if (!isset($_SERVER['HTTPS']) && $_config['forcehttps'] == 'TRUE') 
     { header('Location: https://'.$_SERVER['REMOTE_HOST'].$_SERVER['REQUEST_URI']); } else { $https = 'false'; }
+    list($domain, $username) = split('[\\]', $_SERVER["LOGON_USER"]);
  ?>
 
