@@ -3,12 +3,16 @@
 <title>phpadadmin</title>
 <meta name="author" content="James Lloyd">
 <link rel="shortcut icon"  href="">
-        <script src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js" type="text/javascript"></script> 
-        <script src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js" type="text/javascript"></script> 
+        <script src="<?php echo PATH ?>thirdparty/prototype.js" type="text/javascript"></script> 
+        <script src="<?php echo PATH ?>thirdparty/scriptaculous.js" type="text/javascript"></script> 
         <script src="<?php echo PATH ?>thirdparty/validate.js" type="text/javascript"></script>
         <script src="<?php echo PATH ?>thirdparty/fabtabulous.js" type="text/javascript"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo PATH ?>style.css" />
 </head>
 <body>
 <div id="wrapper">
-<?php include ('adminmenu.php'); ?>
+<div id="header">
+<?php include ('adminmenu.php'); ?><img src="<?php echo PATH ?>images/logo.gif">
+</div>
+<?php include ('menu.php'); ?>
+<div id=content>

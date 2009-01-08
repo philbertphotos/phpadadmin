@@ -1,7 +1,9 @@
 <?php
-require_once('../config.php'); 
-$attrs = _dbquery('SELECT * FROM '.$db_database.'.attributes',MYSQL_ASSOC)    ;
-include (INSTALLPATH.'header.php');
+ require_once('config.php');
+ 
+  $attrs = _dbquery('SELECT * FROM phpadadmin.attributes',MYSQL_ASSOC,false)    ;
+ // $smarty->assign('pagetitle', 'testing');
+include ('header.php'); 
 ?> 
 <div id="mainmenu"> 
     <ul id="tabs">
@@ -51,7 +53,7 @@ include (INSTALLPATH.'header.php');
 <div class="form-row">
 <div class="field-label"><label for="formtype">Form Type</label>:</div>   
  <?php
-   $formtypes= _dbquery('SELECT * FROM '.$db_database.'.formtype',MYSQL_ASSOC);                   
+   $formtypes= _dbquery('SELECT * FROM '.$db_database.'.formtype',MYSQL_ASSOC,false);                   
  ?>
        <SELECT name="formtype">
        <?php foreach ($formtypes as $formtype) { ?>
@@ -67,7 +69,7 @@ include (INSTALLPATH.'header.php');
     <div class="field-label"><label for="validation">Validation</label>:</div> 
     <div class="field-widget">
  <?php
-   $validationtypes= _dbquery('SELECT * FROM '.$db_database.'.validationtype',MYSQL_ASSOC);                   
+   $validationtypes= _dbquery('SELECT * FROM '.$db_database.'.validationtype',MYSQL_ASSOC,false);                   
  ?>
        <SELECT name="validation">
        <?php foreach ($validationtypes as $validationtype) { ?>
@@ -102,4 +104,4 @@ include (INSTALLPATH.'header.php');
                       </script>
  <?php $i++; } ?>
 
-<?php include (INSTALLPATH.'footer.php');   ?>
+<?php include ('footer.php');   ?>

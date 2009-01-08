@@ -4,5 +4,5 @@ if (!function_exists('ldap_connect')) {
         }
   require_once('mysql-functions.php');
   require_once('encryption-functions.php');
-  
+  require_once('phpadadmin-functions.php');
 ?>

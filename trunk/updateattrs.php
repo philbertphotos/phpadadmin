@@ -1,8 +1,8 @@
 <?php
-require_once('../config.php');
+require_once('config.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-
+      echo mysql_escape_string($_POST['options']);
         if (isset($_POST['useredit'])) { $useredit='TRUE'; } else { $useredit='FALSE'; }
         if (isset($_POST['required'])) { $required='TRUE'; } else { $required='FALSE'; }
         if (isset($_POST['manageredit'])) { $manageredit='TRUE'; } else { $manageredit='FALSE'; }
@@ -25,5 +25,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo $sql;
        _dbupdate($sql);    
     }    
-header('Location: '.PATH.'admin/attributes.php#'.$_POST['attr'] );
-?>
+header('Location: '.PATH.'admin.php#'.$_POST['attr'] );

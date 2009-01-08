@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2009 at 10:08 PM
+-- Generation Time: Jan 08, 2009 at 08:19 PM
 -- Server version: 5.1.30
 -- PHP Version: 5.2.7
 
@@ -75,27 +75,28 @@ CREATE TABLE `config` (
   `example` varchar(100) NOT NULL,
   `validation` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `config`
 --
 
 INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VALUES
-(1, 'domain', 'account_suffix', '', '@mydomain.local', ''),
-(2, 'domain', 'base_dn', '', 'DC=mydomain,DC=local', ''),
-(3, 'domain', 'domain_controllers', '', 'dc01.mydomain.local,dc02.mydomain.local', ''),
-(4, 'domain', 'ad_username', '', 'administrator', ''),
-(5, 'domain', 'ad_password', '', '**********', ''),
-(6, 'domain', 'real_primarygroup', '', 'Domain Users', ''),
-(7, 'domain', 'use_ssl', '', 'true', ''),
-(8, 'domain', 'recursive_groups', '', 'true', ''),
-(9, 'password', 'minpwlength', '5', '5 (minimum password length)', 'validate-digits'),
-(10, 'password', 'minquestionslength', '10', '10 minimum number of characters in user questions', 'validate-digits'),
-(11, 'password', 'minanswerlength', '3', '3 minimum number of characters in answer', 'validate-digits'),
-(12, 'password', 'noquestionstoask', '3', '3 Number of questions you have to answer to reset password', 'validate-digits'),
-(13, 'password', 'encryptionkey', 'cd2aee218c6e678f5ca4bfca8b064710', 'some random garbage to encrypt the user questions', ''),
-(14, 'phpadadmin', 'admingroup', 'NULL', 'Domain Admins ( the name of the group that has access to these page NULL for only you)', '');
+(1, 'ldap', 'account_suffix', '@james-lloyd.com', '@mydomain.local', ''),
+(2, 'ldap', 'base_dn', 'DC=james-lloyd,DC=com', 'DC=mydomain,DC=local', ''),
+(3, 'ldap', 'domain_controllers', 'server1.james-lloyd.com', 'dc01.mydomain.local,dc02.mydomain.local', ''),
+(4, 'ldap', 'ad_username', 'administrator', 'administrator', ''),
+(5, 'ldap', 'ad_password', 'criterion', '**********', ''),
+(6, 'ldap', 'real_primarygroup', 'Domain Users', 'Domain Users', ''),
+(7, 'ldap', 'use_ssl', 'true', 'true', ''),
+(8, 'ldap', 'recursive_groups', 'true', 'true', ''),
+(9, 'selfservice', 'minpwlength', '5', '5 (minimum password length)', 'validate-digits'),
+(10, 'selfservice', 'minquestionslength', '10', '10 minimum number of characters in user questions', 'validate-digits'),
+(11, 'selfservice', 'minanswerlength', '3', '3 minimum number of characters in answer', 'validate-digits'),
+(12, 'selfservice', 'noquestionstoask', '3', '3 Number of questions you have to answer to reset password', 'validate-digits'),
+(13, 'selfservice', 'encryptionkey', 'cd2aee218c6e678f5ca4bfca8b064710', 'some random garbage to encrypt the user questions', ''),
+(14, 'phpadadmin', 'admingroup', 'NULL', 'Domain Admins ( the name of the group that has access to these page NULL for only you)', ''),
+(15, 'phpadadmin', 'forcehttps', 'FALSE', 'true (Force connections over https)', '');
 
 -- --------------------------------------------------------
 

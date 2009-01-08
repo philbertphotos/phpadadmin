@@ -4,15 +4,52 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 76%;
     text-align:center;
-    background:#CCC;
+    background-color: #Ccc;
 }
 #wrapper {
     width:910px;
     text-align:left;
     margin-left:auto;
     margin-right:auto;
-    padding:10px;
     background:#FFFFFF;
+    border:3px solid #34487E;
+}
+#header {
+    background:#34487E;
+}
+#adminmenu { float:right;text-align:right; }
+#adminmenu li {
+    display :inline;
+    color:#C5D1E1;
+    text-align:right;
+    padding-right:3px;
+}
+#adminmenu .help {
+  background-image: url(/images/icons/help.gif);
+  background-repeat: no-repeat;
+  background-position: left;
+}
+#adminmenu li a { color:#C5D1E1;text-decoration:none; } 
+    
+#menu { 
+    height: 30px;
+    background:#C5D1E1;
+}
+#adminmenu ul,#menu ul { margin:0;padding:0; } 
+#menu li {
+    margin-top:3px;
+    margin-left:3px;
+    font-size:80%;
+        float:left;
+        display:block;
+        height:16px;
+        width:120px;
+        border: 2px solid #34487E;
+        text-align:center;
+}
+#menu li a { color:white; text-decoration: none;}
+#content {
+    margin:10px;
 }
 #footer {
     text-align:center;
