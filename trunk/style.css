@@ -7,7 +7,7 @@ body {
     background-color: #Ccc;
 }
 #wrapper {
-    width:910px;
+    width:720px;
     text-align:left;
     margin-left:auto;
     margin-right:auto;
@@ -17,7 +17,7 @@ body {
 #header {
     background:#34487E;
 }
-#adminmenu { float:right;text-align:right; }
+#adminmenu { float:right;text-align:right;font-size:80%;  }
 #adminmenu li {
     display :inline;
     color:#C5D1E1;
@@ -32,22 +32,24 @@ body {
 #adminmenu li a { color:#C5D1E1;text-decoration:none; } 
     
 #menu { 
-    height: 30px;
+    height: 26px;
     background:#C5D1E1;
 }
 #adminmenu ul,#menu ul { margin:0;padding:0; } 
 #menu li {
+    background:#34487E;
     margin-top:3px;
     margin-left:3px;
     font-size:80%;
         float:left;
         display:block;
-        height:16px;
+        height:15px;
         width:120px;
-        border: 2px solid #34487E;
+        border: 2px solid #ddd;
         text-align:center;
 }
 #menu li a { color:white; text-decoration: none;}
+#menu li:hover {border: 2px solid #888; } 
 #content {
     margin:10px;
 }
