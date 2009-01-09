@@ -375,11 +375,11 @@ class adLDAP {
 		$entries = ldap_get_entries($this->_conn, $sr);
 		
 		// AD does not return the primary group in the ldap query, we may need to fudge it
-		if ($this->_real_primarygroup){
+		/*if ($this->_real_primarygroup){
 			$entries[0]["memberof"][]=$this->group_cn($entries[0]["primarygroupid"][0]);
-		} else {
+		} else { */
 			$entries[0]["memberof"][]="CN=Domain Users,CN=Users,".$this->_base_dn;
-		}
+		//}
 		
 		$entries[0]["memberof"]["count"]++;
 		return ($entries);
@@ -416,7 +416,7 @@ class adLDAP {
 		$user_dn=$user[0]["dn"];
 
 		//translate the update to the LDAP schema				
-		$mod=$this->adldap_schema($attributes);
+		$mod=$attributes;
 		if (!$mod){ return (false); }
 		
 		//set the account control attribute (only if specified)
@@ -530,26 +530,26 @@ class adLDAP {
 		//if ($attributes["address_country"]){ $mod["countryCode"][0]=$attributes["address_country"]; } // use country codes?
 		if ($attributes["address_pobox"]){ $mod["postOfficeBox"][0]=$attributes["address_pobox"]; }
 		if ($attributes["address_state"]){ $mod["st"][0]=$attributes["address_state"]; }
-		if ($attributes["address_street"]){ $mod["streetAddress"][0]=$attributes["address_street"]; }
+		//if ($attributes["streetaddress"]){ $mod["streetAddress"][0]=$attributes["streetAddress"]; }
 		if ($attributes["company"]){ $mod["company"][0]=$attributes["company"]; }
 		if ($attributes["change_password"]){ $mod["pwdLastSet"][0]=0; }
 		if ($attributes["company"]){ $mod["company"][0]=$attributes["company"]; }
 		if ($attributes["department"]){ $mod["department"][0]=$attributes["department"]; }
 		if ($attributes["description"]){ $mod["description"][0]=$attributes["description"]; }
-		if ($attributes["display_name"]){ $mod["displayName"][0]=$attributes["display_name"]; }
+		//if ($attributes["displayName"]){ $mod["displayName"][0]=$attributes["displayName"]; }
 		if ($attributes["email"]){ $mod["mail"][0]=$attributes["email"]; }
 		if ($attributes["expires"]){ $mod["accountExpires"][0]=$attributes["expires"]; } //unix epoch format?
-		if ($attributes["firstname"]){ $mod["givenName"][0]=$attributes["firstname"]; }
+		//if ($attributes["givenName"]){ $mod["givenName"][0]=$attributes["givenName"]; }
 		if ($attributes["home_directory"]){ $mod["homeDirectory"][0]=$attributes["home_directory"]; }
 		if ($attributes["home_drive"]){ $mod["homeDrive"][0]=$attributes["home_drive"]; }
 		if ($attributes["initials"]){ $mod["initials"][0]=$attributes["initials"]; }
 		if ($attributes["logon_name"]){ $mod["userPrincipalName"][0]=$attributes["logon_name"]; }
 		if ($attributes["manager"]){ $mod["manager"][0]=$attributes["manager"]; }  //UNTESTED ***Use DistinguishedName***
-		if ($attributes["office"]){ $mod["physicalDeliveryOfficeName"][0]=$attributes["office"]; }
+		if ($attributes["physicalDeliveryOfficeName"]){ $mod["physicalDeliveryOfficeName"][0]=$attributes["physicalDeliveryOfficeName"]; }
 		if ($attributes["password"]){ $mod["unicodePwd"][0]=$this->encode_password($attributes["password"]); }
 		if ($attributes["profile_path"]){ $mod["profilepath"][0]=$attributes["profile_path"]; }
 		if ($attributes["script_path"]){ $mod["scriptPath"][0]=$attributes["script_path"]; }
-		if ($attributes["surname"]){ $mod["sn"][0]=$attributes["surname"]; }
+		//if ($attributes["sn"]){ $mod["sn"][0]=$attributes["sn"]; }
 		if ($attributes["title"]){ $mod["title"][0]=$attributes["title"]; }
 		if ($attributes["telephone"]){ $mod["telephoneNumber"][0]=$attributes["telephone"]; }
 		if ($attributes["extensionattribute1"]){ $mod["extensionattribute1"][0]=$attributes["extensionattribute1"]; }
@@ -561,18 +561,19 @@ class adLDAP {
 		if ($attributes["extensionattribute7"]){ $mod["extensionattribute7"][0]=$attributes["extensionattribute7"]; }
 		if ($attributes["web_page"]){ $mod["wWWHomePage"][0]=$attributes["web_page"]; }
 		//echo ("<pre>"); print_r($mod);
-/*
+
 		// modifying a name is a bit fiddly
 		if ($attributes["firstname"] && $attributes["surname"]){
 			$mod["cn"][0]=$attributes["firstname"]." ".$attributes["surname"];
 			$mod["displayname"][0]=$attributes["firstname"]." ".$attributes["surname"];
 			$mod["name"][0]=$attributes["firstname"]." ".$attributes["surname"];
 		}
-*/
+
 
 
 		if (count($mod)==0){ return (false); }
 		return ($mod);
+	
 	}
 
 
