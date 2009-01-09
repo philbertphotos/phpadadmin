@@ -1,7 +1,7 @@
 <?php
   require_once('config.php');
         $sql='SELECT * FROM '.$db_database.'.attributes WHERE uservisable = \'TRUE\' ORDER BY `order`;';
-  $attrs = _dbquery($sql,MYSQL_ASSOC)    ;
+  $attrs = _get_attributes();
 
   include ('header.php');
   ?>
@@ -23,7 +23,7 @@
   
   
 <div class="panel" id="home">
-<form id="test" action="#" method="get">    
+<form id="test" action="updateuser.php" method="post">    
  <fieldset>  <legend>Update your user attributes</legend> 
  <?php $i=0; foreach ($attrs as $attr) { ?>
 
@@ -32,7 +32,8 @@
     case "text": ?>
     <div class="form-row"> 
    <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div>
-   <div class="field-widget"><input name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>"  <?php if ($_userinfo[0][$attr['attr']][0]) { ?>value="<?php echo $_userinfo[0][$attr['attr']][0] ?>"<?php } ?>/> <em><?php echo $attr['desc'] ?></em></div>
+   <div class="field-widget">
+    <input <?php if ($attr['useredit'] == 'FALSE') { ?>DISABLED<?php } ?> name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>"  <?php if (isset($_userinfo[0][$attr['attr']][0])) { ?>value="<?php echo $_userinfo[0][$attr['attr']][0] ?>"<?php } ?>/> <em><?php echo $attr['desc'] ?></em></div>
    </div>
    <?php break; 
    case "dropdown":
@@ -41,13 +42,13 @@
                         <div class="form-row"> 
                             <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div> 
                             <div class="field-widget"> 
-                                <select id="<?php echo $attr['attr'] ?>" name="<?php echo $attr['attr'] ?>" class="validate-selection" title="Choose your <?php echo $attr['displayattr'] ?>"> 
+                                <select <?php if ($attr['useredit'] == 'FALSE') { ?>DISABLED<?php } ?> id="<?php echo $attr['attr'] ?>" name="<?php echo $attr['attr'] ?>" class="validate-selection" title="Choose your <?php echo $attr['displayattr'] ?>"> 
                                     <option>Select one...</option> 
                                     <?php 
                                     
                                     foreach ($options as $option)
                                         {
-                                        ?><option><?php echo $option ?></option><?php
+                                        ?><option <?php if ($_userinfo[0][$attr['attr']][0] == $option) { ?>SELECTED<?php }?>><?php echo $option ?></option><?php
                                         }
                                         ?>
                                 </select> 
@@ -58,7 +59,7 @@
    ?>
    <div class="form-row"> 
     <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div> 
-    <div class="field-widget"><input id="<?php echo $attr['attr'] ?>"  type="checkbox" name="<?php echo $attr['attr'] ?>" value="TRUE"></div>
+    <div class="field-widget"><input <?php if ($attr['useredit'] == 'FALSE') { ?>DISABLED <?php } ?><?php if (isset($_userinfo[0][$attr['attr']][0]) && $_userinfo[0][$attr['attr']][0] == 'TRUE') { ?>CHECKED<?php }?> id="<?php echo $attr['attr'] ?>"  type="checkbox" name="<?php echo $attr['attr'] ?>" value="TRUE"></div>
     </div>
    <?php
    break;
@@ -70,7 +71,7 @@
   <div class="field-label"> 
    <?php foreach ($radios as $radio)   
         { ?>
-    <input type="radio" name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>-<?php echo $radio ?>" value="<?php echo $radio ?>" /><?php echo $radio ?><br />
+    <input <?php if ($attr['useredit'] == 'FALSE') { ?>DISABLED<?php } ?> <?php if (isset($_userinfo[0][$attr['attr']][0]) && $_userinfo[0][$attr['attr']][0] == $radio) { ?>CHECKED<?php }?> type="radio" name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>-<?php echo $radio ?>" value="<?php echo $radio ?>" /><?php echo $radio ?><br />
    <?php } ?>
    </div>
    </div>
@@ -80,13 +81,14 @@
    ?>
    <div class="form-row">
       <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div>
-      <div class="field-widget"><textarea <?php if (isset($attr['options'])) { echo $attr['options']; } ?>name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>" /></textarea></div>
+      <div class="field-widget"><textarea <?php if (isset($attr['options'])) { echo $attr['options']; } ?>name="<?php echo $attr['attr'] ?>" id="<?php echo $attr['attr'] ?>" class="<?php if (isset($attr['required']) && $attr['required'] == 'TRUE' ) { echo 'required '; }; if (isset($attr['validation'])) { echo $attr['validation']; } ?>" /><?php echo $_userinfo[0][strtolower($attr['attr'])][0] ?></textarea></div>
   </div>
    <?php
    break;
  }?>
 
  <?php $i++; } ?>
+ <div class="field-widget"><input name="<?php echo $name ?>config-submit" type="submit" value="Update" /></div>  
  </fieldset>
  </form>
  

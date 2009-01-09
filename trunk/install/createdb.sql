@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2009 at 08:19 PM
+-- Generation Time: Jan 09, 2009 at 02:42 PM
 -- Server version: 5.1.30
 -- PHP Version: 5.2.7
 
@@ -33,6 +33,7 @@ CREATE TABLE `attributes` (
   `options` varchar(255) NOT NULL DEFAULT '',
   `desc` varchar(255) NOT NULL,
   `validation` varchar(40) NOT NULL DEFAULT 'NONE',
+  `requireexchange` varchar(10) NOT NULL DEFAULT 'FALSE',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
@@ -40,26 +41,26 @@ CREATE TABLE `attributes` (
 -- Dumping data for table `attributes`
 --
 
-INSERT INTO `attributes` (`id`, `attr`, `displayattr`, `order`, `uservisable`, `required`, `useredit`, `manageredit`, `search`, `formtype`, `options`, `desc`, `validation`) VALUES
-(1, 'givenname', 'First Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', 'Given name', 'validate-alpha'),
-(2, 'sn', 'Last Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', 'Surname', 'validate-alpha'),
-(3, 'title', 'Job Title', 4, 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'text', '', '', 'validate-email'),
-(4, 'description', 'Description', 3, 'FALSE', 'FALSE', 'TRUE', 'TRUE', 'FALSE', 'text', 'this is a text', 'beans', 'NONE'),
-(5, 'telephonenumber', 'Telephone Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', '', 'validate-digits'),
-(6, 'mobile', 'Mobile Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'validate-digits'),
-(7, 'facsimiletelephonenumber', 'Fax Number', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'validate-digits'),
-(8, 'pager', 'Pager', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE'),
-(9, 'company', 'Company Name', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'dropdown', 'HP,EDS', '', 'NONE'),
-(10, 'physicaldeliveryofficename', 'Office', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'dropdown', 'BIG OFFICE,small office,beans,meanz,heinz', '', 'NONE'),
-(11, 'streetaddress', 'Address', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'textbox', 'rows="5" cols="50"', '', 'NONE'),
-(12, 'mail', 'Email Address', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE'),
-(13, 'extensionattribute1', 'Has Blackberry', 999, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'checkbox', '', '', 'NONE'),
-(14, 'extensionattribute2', 'Sex', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'radio', 'Male,Female,Yes Please tee hee', '', 'NONE'),
-(15, 'extensionattribute3', 'Home Email', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', 'Your home email address', 'validate-email'),
-(16, 'extensionattribute4', 'Employee number', 1, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'text', '', 'Your Employee number (can be found in SAP, if you can find anything in SAP, good luck!)', 'validate-digits'),
-(17, 'extensionattribute5', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE'),
-(18, 'extensionattribute6', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE'),
-(19, 'extensionattribute7', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE');
+INSERT INTO `attributes` (`id`, `attr`, `displayattr`, `order`, `uservisable`, `required`, `useredit`, `manageredit`, `search`, `formtype`, `options`, `desc`, `validation`, `requireexchange`) VALUES
+(1, 'givenname', 'First Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', 'Given name', 'validate-alpha', 'FALSE'),
+(2, 'sn', 'Last Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', 'Surname', 'validate-alpha', 'FALSE'),
+(3, 'title', 'Job Title', 4, 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'text', '', '', 'validate-email', 'FALSE'),
+(4, 'description', 'Description', 3, 'FALSE', 'FALSE', 'TRUE', 'TRUE', 'FALSE', 'text', 'this is a text', 'beans', 'NONE', 'FALSE'),
+(5, 'telephonenumber', 'Telephone Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', '', 'validate-digits', 'FALSE'),
+(6, 'mobile', 'Mobile Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'validate-digits', 'FALSE'),
+(7, 'facsimiletelephonenumber', 'Fax Number', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'validate-digits', 'FALSE'),
+(8, 'pager', 'Pager', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'FALSE'),
+(9, 'company', 'Company Name', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'dropdown', 'HP,EDS', '', 'NONE', 'FALSE'),
+(10, 'physicaldeliveryofficename', 'Office', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'dropdown', 'BIG OFFICE,small office,beans,meanz,heinz', '', 'NONE', 'FALSE'),
+(11, 'streetaddress', 'Address', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'textbox', 'rows="5" cols="50"', '', 'NONE', 'FALSE'),
+(12, 'mail', 'Email Address', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'FALSE'),
+(13, 'extensionattribute1', 'Has Blackberry', 999, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'checkbox', '', '', 'NONE', 'TRUE'),
+(14, 'extensionattribute2', 'Sex', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'radio', 'Male,Female,Yes Please tee hee', '', 'NONE', 'TRUE'),
+(15, 'extensionattribute3', 'Home Email', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', 'Your home email address', 'validate-email', 'TRUE'),
+(16, 'extensionattribute4', 'Employee number', 1, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'text', '', 'Your Employee number (can be found in SAP, if you can find anything in SAP, good luck!)', 'validate-digits', 'TRUE'),
+(17, 'extensionattribute5', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE'),
+(18, 'extensionattribute6', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE'),
+(19, 'extensionattribute7', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE');
 
 -- --------------------------------------------------------
 
@@ -75,7 +76,7 @@ CREATE TABLE `config` (
   `example` varchar(100) NOT NULL,
   `validation` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `config`
@@ -87,7 +88,7 @@ INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VA
 (3, 'ldap', 'domain_controllers', 'server1.james-lloyd.com', 'dc01.mydomain.local,dc02.mydomain.local', ''),
 (4, 'ldap', 'ad_username', 'administrator', 'administrator', ''),
 (5, 'ldap', 'ad_password', 'criterion', '**********', ''),
-(6, 'ldap', 'real_primarygroup', 'Domain Users', 'Domain Users', ''),
+(6, 'ldap', 'real_primarygroup', 'true', 'true', ''),
 (7, 'ldap', 'use_ssl', 'true', 'true', ''),
 (8, 'ldap', 'recursive_groups', 'true', 'true', ''),
 (9, 'selfservice', 'minpwlength', '5', '5 (minimum password length)', 'validate-digits'),
@@ -96,7 +97,8 @@ INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VA
 (12, 'selfservice', 'noquestionstoask', '3', '3 Number of questions you have to answer to reset password', 'validate-digits'),
 (13, 'selfservice', 'encryptionkey', 'cd2aee218c6e678f5ca4bfca8b064710', 'some random garbage to encrypt the user questions', ''),
 (14, 'phpadadmin', 'admingroup', 'NULL', 'Domain Admins ( the name of the group that has access to these page NULL for only you)', ''),
-(15, 'phpadadmin', 'forcehttps', 'FALSE', 'true (Force connections over https)', '');
+(15, 'phpadadmin', 'forcehttps', 'FALSE', 'true (Force connections over https)', ''),
+(16, 'phpadadmin', 'exchangeinstalled', 'FALSE', 'TRUE (have you run the exchange schema update?, this will allow use of custom user attributes)', '');
 
 -- --------------------------------------------------------
 

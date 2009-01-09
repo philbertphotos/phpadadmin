@@ -1,6 +1,7 @@
 <?php
 require_once('../config.php'); 
-$attrs = _dbquery('SELECT * FROM '.$db_database.'.attributes',MYSQL_ASSOC)    ;
+//$attrs = _dbquery('SELECT * FROM '.$db_database.'.attributes ORDER by `order`' ,MYSQL_ASSOC)    ;
+$attrs = _get_attributes(true); 
 include (INSTALLPATH.'header.php');
 ?> 
 <div id="mainmenu"> 
@@ -18,7 +19,7 @@ include (INSTALLPATH.'header.php');
 
  <?php $i=0; foreach ($attrs as $attr) { ?>
  <div class="panel" id="<?php echo $attr['attr'] ?>">
-  <fieldset>  <legend><?php echo $attr['displayattr'] ?></legend> 
+  <fieldset>  <legend><?php echo $attr['displayattr'] ?> (<?php echo $attr['attr'] ?>)</legend> 
  <form name="<?php echo $attr['attr'] ?>" action="updateattrs.php" method="post">
    <div class="form-row"> 
    <div class="field-label"><label for="displayattr">Attribute Display Name</label>:</div>

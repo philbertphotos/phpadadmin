@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                      SET `value` = \''.$_POST[$name['name']].'\' 
                      WHERE `config`.`id` = '.$_POST[$name['name'].'-id'].' LIMIT 1 ;
                      ;';
-             echo $sql;
+            
             _dbupdate($sql); 
             }
         }
