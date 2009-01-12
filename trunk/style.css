@@ -25,9 +25,16 @@ body {
     padding-right:3px;
 }
 #adminmenu .help {
+  display:block;
+  font-weight:bold;
   background-image: url(/images/icons/help.gif);
   background-repeat: no-repeat;
   background-position: left;
+  width: 40px;
+  float:right;
+  margin-top:2px;
+  height:20px;
+  vertical-align: middle;
 }
 #adminmenu li a { color:#C5D1E1;text-decoration:none; } 
     
@@ -144,3 +151,4 @@ label {
 .field-widget {
  
 }
+
