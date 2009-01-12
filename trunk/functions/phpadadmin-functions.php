@@ -1,4 +1,20 @@
 <?php
+function _get_attributes($config=false)
+    {
+       global $_config;
+       global $db_database;
+       if ($_config['phpadadmin']['exchangeinstalled'] == 'TRUE') 
+            {
+            if ($config = false) { $where = ''; } else { $where = 'WHERE uservisable = \'TRUE\''; } 
+            $sql='SELECT * FROM '.$db_database.'.attributes '.$where.' ORDER BY `order`;'; 
+            } else {
+            if ($config = false) { $where = ''; } else { $where = 'uservisable = \'TRUE\' AND'; } 
+            $sql='SELECT * FROM '.$db_database.'.attributes WHERE '.$where.' requireexchange = \'FALSE\' ORDER BY `order`;';    
+            }
+        $attrs = _dbquery($sql,MYSQL_ASSOC)    ;
+        return ($attrs);    
+    }
+
 function _phpadadmin_config_panel($name)
     { 
      global $db_database; 
@@ -26,9 +42,22 @@ function _phpadadmin_config_panel($name)
     </script> 
 <?php } ?>
 
+<<<<<<< .mine
+<?php $completeconfig = _dbquery('SELECT `name`,`value`,`type` FROM '.$db_database.'.config ;',MYSQL_ASSOC);  
+=======
 <?php $completeconfig = _dbquery('SELECT `name`,`value` FROM '.$db_database.'.config WHERE type = \'ldap\' ;',MYSQL_ASSOC);  
+>>>>>>> .r95
        foreach ($completeconfig as $configitem)
         {
+<<<<<<< .mine
+         if ($configitem['name'] == 'domain_controllers')
+            {
+             $value = explode (',',$configitem['value'])   ;
+            } else {
+            $value =  $configitem['value'];  
+            }
+         $_config[$configitem['type']][$configitem['name']]= $value;
+=======
          if ($configitem['name'] == 'domain_controllers')
             {
              $value = explode ($configitem['value'],',')   ;
@@ -36,7 +65,12 @@ function _phpadadmin_config_panel($name)
             $value =  $configitem['value'];  
             }
          $_config[$configitem['name']]= $value;
+>>>>>>> .r95
         } 
+<<<<<<< .mine
+
+        
+        ?>=======
 
        
- ?>
+ ?>>>>>>>> .r95

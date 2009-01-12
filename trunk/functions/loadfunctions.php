@@ -5,6 +5,19 @@ if (!function_exists('ldap_connect')) {
   require_once('mysql-functions.php');
   require_once('encryption-functions.php');
   require_once('phpadadmin-functions.php');
+<<<<<<< .mine
+  require_once(INSTALLPATH.'thirdparty/adLDAP_2.1/adLDAP-phpadadmin.php');
+  
+  $phpadadmin = new adLDAP($_config['ldap'])  ;
+  list($domain, $username) = split('[\\]', $_SERVER["LOGON_USER"]);    
+ $getfields = _dbquery('SELECT attr FROM attributes',MYSQL_ASSOC) ;
+ foreach ($getfields as $field)
+    {
+     $fields[]=$field['attr'];
+    }
+    $fields[]='samaccountname';   
+    $fields[]='dn';   
+ $_userinfo = $phpadadmin -> user_info($username,$fields); ?>=======
   require_once(INSTALLPATH.'thirdparty/adLDAP_2.1/adLDAP.php');
   
   $phpadadmin = new adLDAP($_config)  ;
@@ -15,3 +28,4 @@ if (!function_exists('ldap_connect')) {
      $fields[]=$field['attr'];   
     }
  $_userinfo = $phpadadmin -> user_info($username,$fields); ?>
+>>>>>>> .r95
