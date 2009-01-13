@@ -101,6 +101,6 @@ include (INSTALLPATH.'header.php');
                         
                         var valid = new Validation('<?php echo $attr['attr'] ?>', {immediate : true, onFormValidate : formCallback});
                       </script>
- <?php $i++; } ?>
+ <?php if (isset($i)) { $i++;} else { $i=0; } ?>
 
 <?php include (INSTALLPATH.'footer.php');   ?>
