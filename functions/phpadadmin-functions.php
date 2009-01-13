@@ -1,16 +1,16 @@
 <?php
-function _get_attributes($config=false,$forsearch=false)
+function _get_attributes($config=false)
     {
        global $_config;
        global $db_database;
-       if ($_config['phpadadmin']['exchangeinstalled'] == 'TRUE') 
+       if ($_config['ldap']['exchangeinstalled'] == 'TRUE') 
             {
             if ($config = false) { $where = ''; } else { $where = 'WHERE uservisable = \'TRUE\''; } 
-            if ($forsearch = false) { $where = ''; } else { $where = $where.' search = \'TRUE\' AND'; } 
+            //if ($forsearch = false) { $where = ''; } else { $where = $where.' search = \'TRUE\' AND'; } 
             $sql='SELECT * FROM '.$db_database.'.attributes '.$where.' ORDER BY `order`;'; 
             } else {
             if ($config = false) { $where = ''; } else { $where = 'uservisable = \'TRUE\' AND'; }
-            if ($forsearch = false) { $where = ''; } else { $where = $where.' search = \'TRUE\' AND'; }     
+            //if ($forsearch = false) { $where = ''; } else { $where = $where.' search = \'TRUE\' AND'; }     
             $sql='SELECT * FROM '.$db_database.'.attributes WHERE '.$where.' requireexchange = \'FALSE\' ORDER BY `order`;';    
             }
         $attrs = _dbquery($sql,MYSQL_ASSOC)    ;

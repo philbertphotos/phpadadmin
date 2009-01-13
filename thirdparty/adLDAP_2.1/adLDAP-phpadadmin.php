@@ -381,7 +381,7 @@ class adLDAP {
 			$entries[0]["memberof"][]="CN=Domain Users,CN=Users,".$this->_base_dn;
 		//}
 		
-		$entries[0]["memberof"]["count"]++;
+		if (isset($entries[0]["memberof"]["count"])) { $entries[0]["memberof"]["count"]++; } else { $entries[0]["memberof"]["count"]=0; }
 		return ($entries);
 	}
 	

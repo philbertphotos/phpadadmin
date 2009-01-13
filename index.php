@@ -5,23 +5,21 @@
         <li>
             <a href="#search">Search</a> 
         </li>
-<?php //if ($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
-        <li>
-            <a href="#results">Search Results</a>
-        </li>  
-<?php //} ?>
     </ul> 
 <div>
 <?php
-$attrs = _get_attributes(false,TRUE);
+if ($_config['ldap']['exchangeinstalled'] == 'TRUE') 
+    {
+     $sql = 'SELECT `attr`,`displayattr` FROM attributes WHERE search = \'TRUE\' ';
+    } else {
+     $sql = 'SELECT `attr`,`displayattr` FROM attributes WHERE search = \'TRUE\' AND requireexchange = \'FALSE\' ';    
+    }
+$attrs =_dbquery($sql,MYSQL_ASSOC)    ;
 ?>
 <div class="bar">&nbsp;</div>
 <div class="panel" id="search">
 <form id="search" action="#results" method="post">
 <fieldset> 
-<div class="field-label">
-    <label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:
-</div>
 <?php foreach ($attrs as $attr) { ?>
 <div class="field-label">
     <label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:
@@ -35,18 +33,12 @@ $attrs = _get_attributes(false,TRUE);
 </fieldset>
 
 </form>
+
 </div>
-<?php // if ($_SERVER['REQUEST_METHOD'] == 'POST') { ?>
- <div class="panel" id="results">
-hello mum
-        <br>
- </div>                   
-<?php // } ?>  
-                     <script type="text/javascript"> 
-                        function formCallback(result, form) {
-                            window.status = "valiation callback for form '" + form.id + "': result = " + result;
-                        }
-                        
-                        var valid = new Validation('search', {immediate : true, onFormValidate : formCallback});
-                    </script>           
+      <script type="text/javascript"> 
+        function formCallback(result, form) {
+            window.status = "valiation callback for form '" + form.id + "': result = " + result;
+        }
+        var valid = new Validation('search', {immediate : true, onFormValidate : formCallback});
+    </script>          
 <?php include('footer.php') ?>
