@@ -17,7 +17,7 @@
   
   
 <div class="panel" id="myaccount">
-<form id="test" action="updateuser.php" method="post">    
+<form id="myaccount" action="updateuser.php" method="post">    
  <fieldset>  <legend>Update your user attributes</legend> 
  <?php $i=0; foreach ($attrs as $attr) { ?>
 
@@ -33,21 +33,20 @@
    case "dropdown":
    $options = explode(',',$attr['options']);
    ?>
-                        <div class="form-row"> 
-                            <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div> 
-                            <div class="field-widget"> 
-                                <select <?php if ($attr['useredit'] == 'FALSE') { ?>DISABLED<?php } ?> id="<?php echo $attr['attr'] ?>" name="<?php echo $attr['attr'] ?>" class="validate-selection" title="Choose your <?php echo $attr['displayattr'] ?>"> 
-                                    <option>Select one...</option> 
-                                    <?php 
-                                    
-                                    foreach ($options as $option)
-                                        {
-                                        ?><option <?php if ($_userinfo[0][$attr['attr']][0] == $option) { ?>SELECTED<?php }?>><?php echo $option ?></option><?php
-                                        }
-                                        ?>
-                                </select> 
-                            </div> 
-                        </div> 
+        <div class="form-row"> 
+            <div class="field-label"><label for="<?php echo $attr['attr'] ?>"><?php echo $attr['displayattr'] ?></label>:</div> 
+            <div class="field-widget"> 
+                <select <?php if ($attr['useredit'] == 'FALSE') { ?>DISABLED<?php } ?> id="<?php echo $attr['attr'] ?>" name="<?php echo $attr['attr'] ?>" class="validate-selection" title="Choose your <?php echo $attr['displayattr'] ?>"> 
+                    <option>Select one...</option> 
+                    <?php 
+                    foreach ($options as $option)
+                        {
+                        ?><option <?php if (isset($_userinfo[0][$attr['attr']][0]) && $_userinfo[0][$attr['attr']][0]  == $option) { ?>SELECTED<?php }?>><?php echo $option ?></option><?php
+                        }
+                        ?>
+                </select> 
+            </div> 
+        </div> 
    <?php break;
    case "checkbox":
    ?>
@@ -86,13 +85,13 @@
  </fieldset>
  </form>
  
-                     <script type="text/javascript"> 
-                        function formCallback(result, form) {
-                            window.status = "valiation callback for form '" + form.id + "': result = " + result;
-                        }
-                        
-                        var valid = new Validation('test', {immediate : true, onFormValidate : formCallback});
-                    </script>  
+ <script type="text/javascript"> 
+    function formCallback(result, form) {
+        window.status = "valiation callback for form '" + form.id + "': result = " + result;
+    }
+    
+    var valid = new Validation('myaccount', {immediate : true, onFormValidate : formCallback});
+</script>  
 </div>
 <div class="panel" id="search"> 
 Search and stuff

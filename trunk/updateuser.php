@@ -13,6 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             
         } 
      $phpadadmin -> user_modify($_userinfo[0]['samaccountname'][0],$update);
-     header('Location: '.PATH );  
+     header('Location: '.PATH.'myaccount.php' );  
     }
 ?>

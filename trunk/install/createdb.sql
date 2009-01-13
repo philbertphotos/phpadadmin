@@ -1,25 +1,10 @@
--- phpMyAdmin SQL Dump
--- version 3.0.1.1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jan 09, 2009 at 02:42 PM
--- Server version: 5.1.30
--- PHP Version: 5.2.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
---
--- Database: `phpadadmin`
---
 
--- --------------------------------------------------------
 
---
--- Table structure for table `attributes`
---
 
-CREATE TABLE `attributes` (
+CREATE TABLE IF NOT EXISTS `attributes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `attr` varchar(255) NOT NULL,
   `displayattr` varchar(255) NOT NULL,
@@ -37,21 +22,18 @@ CREATE TABLE `attributes` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
---
--- Dumping data for table `attributes`
---
 
-INSERT INTO `attributes` (`id`, `attr`, `displayattr`, `order`, `uservisable`, `required`, `useredit`, `manageredit`, `search`, `formtype`, `options`, `desc`, `validation`, `requireexchange`) VALUES
+INSERT INTO `attributes` VALUES
 (1, 'givenname', 'First Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', 'Given name', 'validate-alpha', 'FALSE'),
 (2, 'sn', 'Last Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', 'Surname', 'validate-alpha', 'FALSE'),
-(3, 'title', 'Job Title', 4, 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'text', '', '', 'validate-email', 'FALSE'),
+(3, 'title', 'Job Title', 4, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', 'Your Job Title', 'NONE', 'FALSE'),
 (4, 'description', 'Description', 3, 'FALSE', 'FALSE', 'TRUE', 'TRUE', 'FALSE', 'text', 'this is a text', 'beans', 'NONE', 'FALSE'),
-(5, 'telephonenumber', 'Telephone Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'text', '', '', 'validate-digits', 'FALSE'),
+(5, 'telephonenumber', 'Telephone Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'text', '', 'Your DDI number', 'validate-digits', 'FALSE'),
 (6, 'mobile', 'Mobile Number', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'validate-digits', 'FALSE'),
-(7, 'facsimiletelephonenumber', 'Fax Number', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'validate-digits', 'FALSE'),
+(7, 'facsimiletelephonenumber', 'Fax Number', 999, 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 'radio', '12356,232463', '', 'validate-digits', 'FALSE'),
 (8, 'pager', 'Pager', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'FALSE'),
-(9, 'company', 'Company Name', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'dropdown', 'HP,EDS', '', 'NONE', 'FALSE'),
-(10, 'physicaldeliveryofficename', 'Office', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'dropdown', 'BIG OFFICE,small office,beans,meanz,heinz', '', 'NONE', 'FALSE'),
+(9, 'company', 'Company Name', 999, 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'dropdown', 'Random Company1,Other Company 2', '', 'NONE', 'FALSE'),
+(10, 'physicaldeliveryofficename', 'Office', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'dropdown', 'BIG OFFICE,small office,beans,meanz,heinz', '', 'NONE', 'FALSE'),
 (11, 'streetaddress', 'Address', 999, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 'textbox', 'rows="5" cols="50"', '', 'NONE', 'FALSE'),
 (12, 'mail', 'Email Address', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'FALSE'),
 (13, 'extensionattribute1', 'Has Blackberry', 999, 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'TRUE', 'checkbox', '', '', 'NONE', 'TRUE'),
@@ -62,13 +44,9 @@ INSERT INTO `attributes` (`id`, `attr`, `displayattr`, `order`, `uservisable`, `
 (18, 'extensionattribute6', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE'),
 (19, 'extensionattribute7', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `config`
---
 
-CREATE TABLE `config` (
+CREATE TABLE IF NOT EXISTS `config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -78,15 +56,12 @@ CREATE TABLE `config` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
---
--- Dumping data for table `config`
---
 
-INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VALUES
+INSERT INTO `config` VALUES
 (1, 'ldap', 'account_suffix', '@james-lloyd.com', '@mydomain.local', ''),
 (2, 'ldap', 'base_dn', 'DC=james-lloyd,DC=com', 'DC=mydomain,DC=local', ''),
 (3, 'ldap', 'domain_controllers', 'server1.james-lloyd.com', 'dc01.mydomain.local,dc02.mydomain.local', ''),
-(4, 'ldap', 'ad_username', 'administrator', 'administrator', ''),
+(4, 'ldap', 'ad_username', 'Administrator', 'administrator', ''),
 (5, 'ldap', 'ad_password', 'criterion', '**********', ''),
 (6, 'ldap', 'real_primarygroup', 'true', 'true', ''),
 (7, 'ldap', 'use_ssl', 'true', 'true', ''),
@@ -96,52 +71,38 @@ INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VA
 (11, 'selfservice', 'minanswerlength', '3', '3 minimum number of characters in answer', 'validate-digits'),
 (12, 'selfservice', 'noquestionstoask', '3', '3 Number of questions you have to answer to reset password', 'validate-digits'),
 (13, 'selfservice', 'encryptionkey', 'cd2aee218c6e678f5ca4bfca8b064710', 'some random garbage to encrypt the user questions', ''),
-(14, 'phpadadmin', 'admingroup', 'NULL', 'Domain Admins ( the name of the group that has access to these page NULL for only you)', ''),
+(14, 'phpadadmin', 'admingroup', 'Domain Admins', 'Domain Admins ( the name of the group that has access to these page NULL for only you)', ''),
 (15, 'phpadadmin', 'forcehttps', 'FALSE', 'true (Force connections over https)', ''),
-(16, 'phpadadmin', 'exchangeinstalled', 'FALSE', 'TRUE (have you run the exchange schema update?, this will allow use of custom user attributes)', '');
+(16, 'ldap', 'exchangeinstalled', 'FALSE', 'TRUE (have you run the exchange schema update?, this will allow use of custom user attributes)', '');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `formtype`
---
 
-CREATE TABLE `formtype` (
+CREATE TABLE IF NOT EXISTS `formtype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
---
--- Dumping data for table `formtype`
---
 
-INSERT INTO `formtype` (`id`, `value`, `name`) VALUES
+INSERT INTO `formtype` VALUES
 (1, 'text', 'Text'),
 (2, 'textbox', 'Text Box'),
 (3, 'radio', 'Radio'),
 (4, 'checkbox', 'Check Box'),
 (5, 'dropdown', 'Drop Down List');
 
--- --------------------------------------------------------
 
---
--- Table structure for table `validationtype`
---
 
-CREATE TABLE `validationtype` (
+CREATE TABLE IF NOT EXISTS `validationtype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` varchar(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
---
--- Dumping data for table `validationtype`
---
 
-INSERT INTO `validationtype` (`id`, `value`, `name`) VALUES
+INSERT INTO `validationtype` VALUES
 (1, 'NONE', 'No Validation'),
 (2, 'validate-alpha', 'Text Only'),
 (3, 'validate-digits', 'Numbers Only'),
