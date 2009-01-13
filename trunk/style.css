@@ -15,9 +15,13 @@ body {
     border:3px solid #34487E;
 }
 #header {
+    width:100%;
     background:#34487E;
 }
-#adminmenu { float:right;text-align:right;font-size:80%;  }
+#header img { 
+    float:left;
+}
+#adminmenu { text-align:right;font-size:80%;height:36px;  }
 #adminmenu li {
     display :inline;
     color:#C5D1E1;
@@ -37,16 +41,17 @@ body {
   vertical-align: middle;
 }
 #adminmenu li a { color:#C5D1E1;text-decoration:none; } 
-    
+.clear { clear:both }    
 #menu { 
-    height: 26px;
+    height: 22px;
     background:#C5D1E1;
+    border-bottom: 2px solid #34487E;
 }
 #adminmenu ul,#menu ul { margin:0;padding:0; } 
 #menu li {
     background:#34487E;
-    margin-top:3px;
-    margin-left:3px;
+    margin-top:1px;
+    margin-left:1px;
     font-size:80%;
         float:left;
         display:block;

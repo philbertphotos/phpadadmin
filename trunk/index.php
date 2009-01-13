@@ -29,7 +29,7 @@ $attrs =_dbquery($sql,MYSQL_ASSOC)    ;
        
  </div>
 <?php }?>
- <div class="field-widget"><input name="search" type="submit" value="Search" /></div> 
+ <div class="field-widget"><input DISABLED name="search" type="submit" value="Search" /></div> 
 </fieldset>
 
 </form>

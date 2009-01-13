@@ -15,20 +15,24 @@ include (INSTALLPATH.'header.php');
 <div>
 <div class="bar">&nbsp;</div> 
 
-
-
  <?php $i=0; foreach ($attrs as $attr) { ?>
- <div class="panel" id="<?php echo $attr['attr'] ?>">
-  <fieldset>  <legend><?php echo $attr['displayattr'] ?> (<?php echo $attr['attr'] ?>)</legend> 
+ <div class="panel" id="<?php echo $attr['attr'] ?>">  
  <form name="<?php echo $attr['attr'] ?>" action="updateattrs.php" method="post">
-   <div class="form-row"> 
-   <div class="field-label"><label for="displayattr">Attribute Display Name</label>:</div>
-    <div class="field-widget"><input class="required" type="text" name="displayattr" value="<?php echo htmlentities($attr['displayattr']) ?>"></div>
-   </div>
+ <fieldset>  <legend>Attribute</legend>  
    <div class="form-row"> 
    <div class="field-label"><label>Attribute name in Active Directory</label>:</div>   
    <div class="field-widget"><?php echo $attr['attr'] ?> <em>the field name within Active Directory</em></div>
    </div>
+   <div class="form-row"> 
+   <div class="field-label"><label for="displayattr">Attribute Display Name</label>:</div>
+    <div class="field-widget"><input class="required" type="text" name="displayattr" value="<?php echo htmlentities($attr['displayattr']) ?>"></div>
+   </div>
+   <div class="form-row">
+   <div class="field-label"><label for="desc">Description</label>:</div>    
+   <div class="field-widget"><input type="text" name="desc" value="<?php echo htmlentities($attr['desc']) ?>"> <em>Add a description to the field to help explain it to the user, like this one :)</em></div>
+   </div>
+   </fieldset>  
+   <fieldset>  <legend>Attribute Permissions</legend>
    <div class="form-row"> 
    <div class="field-label"><label for="uservisable">User Visable</label>:</div>
     <div class="field-widget"><input type="checkbox" name="uservisable" value="<?php echo $attr['uservisable'] ?>" <?php if ($attr['uservisable']== 'TRUE') { ?>checked="YES" <?php } ?>> <em>Is the attribute visable for the users to edit?</em></div>
@@ -45,10 +49,18 @@ include (INSTALLPATH.'header.php');
    <div class="field-label"><label for="manageredit">Manager Edit</label>:</div>  
    <div class="field-widget"><input type="checkbox" name="manageredit" value="<?php echo $attr['manageredit'] ?>" <?php if ($attr['manageredit']== 'TRUE') { ?>checked="YES" <?php } ?>> <em>Is the field editable by line managers and higher?</em></div>
    </div>
+   </fieldset>
+    <fieldset>  <legend>Search Attributes</legend>    
    <div class="form-row"> 
-   <div class="field-label"><label for="search">Attribute Searchable?</label>:</div>     
+   <div class="field-label"><label for="search">Searchable?</label>:</div>     
     <div class="field-widget"><input type="checkbox" name="search" value="<?php echo $attr['search'] ?>" <?php if ($attr['search']== 'TRUE') { ?>checked="YES" <?php } ?>> <em>Is the field to appear as a searchable field in the directory search?</em></div>
     </div>
+       <div class="form-row"> 
+   <div class="field-label"><label for="returninsearch">Appear In Search Results</label>:</div>     
+    <div class="field-widget"><input type="checkbox" name="returninsearch" value="<?php echo $attr['returninsearch'] ?>" <?php if ($attr['returninsearch']== 'TRUE') { ?>checked="YES" <?php } ?>> <em>Is the field to appear in search results?</em></div>
+    </div>
+    </fieldset>
+    <fieldset>  <legend>Form Options</legend>     
 <div class="form-row">
 <div class="field-label"><label for="formtype">Form Type</label>:</div>   
  <?php
@@ -77,22 +89,21 @@ include (INSTALLPATH.'header.php');
        </SELECT> <em>Choose the type of form validation</em>
     </div>
     </div>
-    <div class="form-row">
-    <div class="field-label"><label for="desc">Description</label>:</div>    
-    <div class="field-widget"><input type="text" name="desc" value="<?php echo htmlentities($attr['desc']) ?>"> <em>Add a description to the field to help explain it to the user, like this one :)</em></div>
-    </div>
+    </fieldset>
     <input type="hidden" name="id" value="<?php echo $attr['id'] ?>">
-    <input type="hidden" name="attr" value="<?php echo $attr['attr'] ?>">     
+    <input type="hidden" name="attr" value="<?php echo $attr['attr'] ?>">
+    <fieldset>  <legend>Attribute Postion</legend>        
     <div class="form-row">
         <div class="field-label"><label for="order">Attribute Order</label>:</div>     
         <div class="field-widget"><input class="required validate-digits"  size="3" type="text" name="order" value="<?php echo $attr['order'] ?>"> <em>Arbitary number that orders the fields presented to the users, lower numbers go higher up.</em></div>
     </div>
+    </fieldset>
     <div class="form-row">
          
         <div class="field-widget"><input name="<?php echo $attr['attr'] ?>-submit" type="submit" value="Update" /></div>
     </div>
  </form>
- </fieldset>
+
  </div>
                       <script type="text/javascript"> 
                         function formCallback(result, form) {
@@ -101,6 +112,11 @@ include (INSTALLPATH.'header.php');
                         
                         var valid = new Validation('<?php echo $attr['attr'] ?>', {immediate : true, onFormValidate : formCallback});
                       </script>
- <?php if (isset($i)) { $i++;} else { $i=0; } ?>
+ <?php 
+ 
+ if (isset($i)) { $i++; } else { $i=0; } 
+ 
+ 
+ } ?>
 
 <?php include (INSTALLPATH.'footer.php');   ?>

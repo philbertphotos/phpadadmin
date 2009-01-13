@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         if (isset($_POST['required'])) { $required='TRUE'; } else { $required='FALSE'; }
         if (isset($_POST['manageredit'])) { $manageredit='TRUE'; } else { $manageredit='FALSE'; }
         if (isset($_POST['search'])) { $search='TRUE'; } else { $search='FALSE'; }
+        if (isset($_POST['returninsearch'])) { $returninsearch='TRUE'; } else { $returninsearch='FALSE'; }
         if (isset($_POST['uservisable'])) { $uservisable='TRUE'; } else { $uservisable='FALSE'; }
         $sql= '
         UPDATE  `'.$db_database.'`.`attributes` SET
@@ -14,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         `manageredit` = \''.$manageredit.'\',  
         `required` = \''.$required.'\',  
         `search` = \''.$search.'\',  
+        `returninsearch` = \''.$returninsearch.'\',  
         `uservisable` = \''.$uservisable.'\',  
         `options` =  \''.mysql_escape_string($_POST['options']).'\',
         `formtype` =  \''.$_POST['formtype'].'\',
