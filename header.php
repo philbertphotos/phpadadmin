@@ -1,3 +1,17 @@
+<?php
+list($domain, $username) = split('[\\]', $_SERVER["LOGON_USER"]);   
+  
+   $phpadadmin = new adLDAP($_config['ldap'])  ;
+ 
+ $getfields = _dbquery('SELECT attr FROM attributes',MYSQL_ASSOC) ;
+ foreach ($getfields as $field)
+    {
+     $fields[]=$field['attr'];
+    }
+    $fields[]='samaccountname';   
+    $fields[]='dn'; 
+ $_userinfo = $phpadadmin -> user_info($username,$fields); 
+?>
 <html>
 <head>
 <title>phpadadmin</title>
@@ -12,8 +26,11 @@
 <body>
 <div id="wrapper">
 <div id="header">
-<?php include ('adminmenu.php'); ?><img src="<?php echo PATH ?>images/logo.gif">
+<img src="<?php echo PATH ?>images/logo.gif"><?php include ('adminmenu.php'); ?>
 </div>
+<div class=clear></div>
 <?php include ('menu.php'); ?>
 <div id=content>
-<h4><?php echo $_userinfo[0]['givenname'][0] ?> <?php echo $_userinfo[0]['sn'][0] ?> - (<?php echo $username; ?>) </h4>
+<?php if (isset($_userinfo)) { ?>
+    <h4><?php echo $_userinfo[0]['givenname'][0] ?> <?php echo $_userinfo[0]['sn'][0] ?> - (<?php echo $username; ?>) </h4>
+<?php } ?>

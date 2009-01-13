@@ -282,7 +282,8 @@ class adLDAP {
 		$ret_groups=array();
 		
 		$groups=$this->group_info($group,array("memberof"));
-		$groups=$groups[0]["memberof"];
+		if (isset($groups[0]["memberof"])) { $groups=$groups[0]["memberof"]; } else { $groups=''; } 
+        
 
 		if ($groups){
 			$group_names=$this->nice_names($groups);
