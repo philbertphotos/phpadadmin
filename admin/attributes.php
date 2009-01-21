@@ -1,9 +1,6 @@
-<?php
-require_once('../config.php'); 
-//$attrs = _dbquery('SELECT * FROM '.$db_database.'.attributes ORDER by `order`' ,MYSQL_ASSOC)    ;
-$attrs = _get_attributes(true); 
-include (INSTALLPATH.'header.php');
-?> 
+<?php require_once('../config.php') ?> 
+<?php include('../header.php') ?>
+<?php $attrs = _get_attributes(true);  ?>
 <div id="mainmenu"> 
     <ul id="tabs">
     <?php $i=0; foreach ($attrs as $attr) { ?> 
