@@ -1,4 +1,19 @@
 <?php
+function _html_pagetitle() 
+    {
+     echo 'phpadadmin';   
+    }
+function _html_java()
+    {
+     echo '<script src="'.PATH.'thirdparty/prototype.js" type="text/javascript"></script>'; 
+     echo '<script src="'.PATH.'thirdparty/scriptaculous.js" type="text/javascript"></script>';
+     echo '<script src="'.PATH.'thirdparty/validate.js" type="text/javascript"></script>';
+     echo '<script src="'.PATH.'thirdparty/fabtabulous.js" type="text/javascript"></script>';   
+    }
+function _html_css()
+    {
+      echo '<link rel="stylesheet" type="text/css" href="'.PATH.'style.css" />';   
+    }
 function _get_attributes($config=false)
     {
        global $_config;
@@ -43,39 +58,3 @@ function _phpadadmin_config_panel($name)
         var valid = new Validation('<?php echo $name ?>', {immediate : true, onFormValidate : formCallback});
     </script> 
 <?php } ?>
-
-<?php 
-/*function _form_element_text($value='',$label='',$id,$name,$disabled=false,$required=false,)
- {
-  echo '<div class="form-row"><div class="field-label"><label for="'.$name.'">'.$name.'</label>:</div>';
-  echo '<div class="field-widget">';
-  echo '<input';
-  if ($attr['useredit'] == 'FALSE') { echo $disabled; }
-  echo 'name="'.$name.'"';
-  echo ' id="'.$id.'" class="';
-  if ($required == 'TRUE' ) { echo 'required '; }
-  if (isset($attr['validation'])) { echo $attr['validation']; } ?>"  <?php if (isset($_userinfo[0][$attr['attr']][0])) { ?>value="<?php echo $_userinfo[0][$attr['attr']][0] ?>"<?php } ?>/> <em><?php echo $attr['desc'] ?></em>
-  echo '</div>';
-
-      
-  echo '</div>';   
- } */
-?>
-
-
-
-
-<?php $completeconfig = _dbquery('SELECT `name`,`value`,`type` FROM '.$db_database.'.config ;',MYSQL_ASSOC);  
-       foreach ($completeconfig as $configitem)
-        {
-         if ($configitem['name'] == 'domain_controllers')
-            {
-             $value = explode (',',$configitem['value'])   ;
-            } else {
-            $value =  $configitem['value'];  
-            }
-         $_config[$configitem['type']][$configitem['name']]= $value;
-        } 
-
- $_phpadadmin_version = '0.71';       
-        ?>

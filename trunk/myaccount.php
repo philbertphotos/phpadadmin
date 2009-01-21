@@ -1,9 +1,9 @@
+<?php require_once('config.php') ?>
+<?php require_once('functions/loadfunctions.php');  ?>   
+<?php include('header.php') ?>
 <?php
-  require_once('config.php');
-        $sql='SELECT * FROM '.$db_database.'.attributes WHERE uservisable = \'TRUE\' ORDER BY `order`;';
+  $sql='SELECT * FROM '.$db_database.'.attributes WHERE uservisable = \'TRUE\' ORDER BY `order`;';
   $attrs = _get_attributes();
-
-  include ('header.php');
   ?>
 <div id="mainmenu"> 
     <ul id="tabs"> 
@@ -99,4 +99,4 @@ Search and stuff
 <div class="panel" id="questions"> 
 Questions
 </div>
- <?php include('footer.php'); ?>
+ <?php include('templates/footer.php'); ?>

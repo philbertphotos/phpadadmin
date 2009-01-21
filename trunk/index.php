@@ -1,5 +1,7 @@
 <?php require_once('config.php') ?>
+<?php require_once('functions/loadfunctions.php');  ?>   
 <?php include('header.php') ?>
+
 <div id="mainmenu"> 
     <ul id="tabs"> 
         <li>
@@ -41,4 +43,4 @@ $attrs =_dbquery($sql,MYSQL_ASSOC)    ;
         }
         var valid = new Validation('search', {immediate : true, onFormValidate : formCallback});
     </script>          
-<?php include('footer.php') ?>
+<?php include('templates/footer.php') ?>

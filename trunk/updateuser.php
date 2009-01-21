@@ -1,5 +1,7 @@
+<?php require_once('config.php'); ?>
+ 
+ 
 <?php
-require_once('config.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
     $attributes = _dbquery('SELECT `attr` FROM '.$db_database.'.attributes ;',MYSQL_ASSOC); 

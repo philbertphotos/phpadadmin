@@ -1,18 +1,15 @@
-<?php
-require_once('../config.php');     
-include (INSTALLPATH.'header.php'); 
-
-
-?>
+<?php require_once('../config.php'); ?>
+<?php include (INSTALLPATH.'header.php'); ?>
+<?php if (!isset($_GET['config'])) { $_GET['config'] = 'ldap'; } ?>
 <div id="mainmenu"> 
     <ul id="tabs"> 
         <li><a href="#<?php echo $_GET['config'] ?>"><?php echo $_GET['config'] ?> Config</a></li>   
     </ul> 
 <div>
 <div class="bar">&nbsp;</div>
-<?php if ($username == $_config['ldap']['ad_username'] | $phpadadmin->user_ingroup($username,$_config['phpadadmin']['admingroup'])) { ?> 
+ <?php if ($_SERVER['SERVER_NAME'] == 'localhost') { ?>
 <?php _phpadadmin_config_panel($_GET['config']) ?>
-<?php } else { ?>
-<p class=accessdenied>Access Denied, you do not have correct permissions to access this page</p>
+<?php } else {?>
+    This page is only available from the server
 <?php } ?>
-<?php include (INSTALLPATH.'footer.php');?>
+<?php include (INSTALLPATH.'templates/footer.php');?>
