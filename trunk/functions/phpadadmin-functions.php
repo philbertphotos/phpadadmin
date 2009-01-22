@@ -61,7 +61,14 @@ function _phpadadmin_config_panel($name)
     <?php foreach($configs as $config) { ?>
      <div class="form-row">
       <div class="field-label"><label for="<?php echo $config['name'] ?>"><?php echo $config['name'] ?></label>:</div> 
-      <div class="field-widget"><input size="45" <?php if ($name == 'ldap' && $config['name'] == 'ad_password') { ?> DISABLED <?php } ?>class="required <?php if (isset($config['validation'])) { echo $config['validation'] ; } ?>" id="<?php echo $config['name'] ?>"  type="<?php if ($config['name'] == 'ad_password') { ?>password<?php } else { ?>text<?php } ?>" name="<?php echo $config['name'] ?>" value="<?php echo $config['value'] ?>"> <em><?php echo $config['example'] ?></em></div>
+      <div class="field-widget">
+        <input size="45" 
+        <?php if ($name == 'ldap' && $config['name'] == 'ad_password') { ?> DISABLED <?php } ?>
+        class="required <?php if (isset($config['validation'])) { echo $config['validation'] ; } ?>" 
+        id="<?php echo $config['name'] ?>"  
+        type="<?php if ($config['name'] == 'ad_password') { ?>password<?php } else { ?>text<?php } ?>" 
+        name="<?php echo $config['name'] ?>" 
+        value="<?php if ($name == 'ldap' && $config['name'] == 'ad_password') { ?>Im not stupid enough to put the password in clear text in the html thankyou.<?php } else { echo $config['value'];  }?>"> <em><?php echo $config['example'] ?></em></div>
      </div>
      <input type="hidden" name="<?php echo $config['name'] ?>-id" value="<?php echo $config['id'] ?>">    
     <?php } ?> 

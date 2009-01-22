@@ -16,8 +16,17 @@
 <form name="setpassword" action="password.php" method="post" >
 <fieldset><legend>Set your AD Password</legend>
 <center>
-<input type="password" name="password1" ><br>
-<input type="password" name="password2" class="validate-password-confirm"><br>
+<table>
+    <tr>
+        <td>Username:</td><td><input type="text" class="required" name="username" ></td>
+    </tr>
+    <tr>
+        <td>Password:</td><td><input type="password" name="password1" ></td>
+    </tr>
+    <tr>
+        <td>Repeat Password:</td><td><input type="password" name="password2" class="validate-password-confirm"></td>
+    </tr>
+</table>
 <?php list($domain, $username) = split('[\\]', $_SERVER["LOGON_USER"]); ?>
 <input type="submit" name="submit" <?php if ($username !== $administatoruser) { ?> DISABLED <?php } ?> value="Set Password" ></center>  
 
@@ -48,6 +57,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     { 
     _dbupdate('UPDATE `phpadadmin`.`config` SET `value` = \''.$_POST['password1'].'\' WHERE `config`.`name` = \'ad_password\' LIMIT 1 ;');     
+    _dbupdate('UPDATE `phpadadmin`.`config` SET `value` = \''.$_POST['username'].'\' WHERE `config`.`name` = \'ad_username\' LIMIT 1 ;');     
     echo '<center><b>updated</b></center>';
     echo '<center><b>     <a href="../admin/configuration.php?config=ldap">Configure Ldap Settings</a> </b></center>';
     }

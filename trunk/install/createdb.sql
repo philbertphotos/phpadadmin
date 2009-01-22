@@ -1,4 +1,9 @@
+
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+
+
+
 CREATE TABLE IF NOT EXISTS `attributes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `attr` varchar(255) NOT NULL,
@@ -17,6 +22,8 @@ CREATE TABLE IF NOT EXISTS `attributes` (
   `requireexchange` varchar(10) NOT NULL DEFAULT 'FALSE',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+
 INSERT INTO `attributes` (`id`, `attr`, `displayattr`, `order`, `uservisable`, `required`, `useredit`, `manageredit`, `search`, `returninsearch`, `formtype`, `options`, `desc`, `validation`, `requireexchange`) VALUES
 (1, 'givenname', 'First Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'text', '', 'Given name', 'validate-alpha', 'FALSE'),
 (2, 'sn', 'Last Name', 2, 'TRUE', 'TRUE', 'TRUE', 'FALSE', 'TRUE', 'FALSE', 'text', '', 'Surname', 'validate-alpha', 'FALSE'),
@@ -37,6 +44,9 @@ INSERT INTO `attributes` (`id`, `attr`, `displayattr`, `order`, `uservisable`, `
 (17, 'extensionattribute5', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE'),
 (18, 'extensionattribute6', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE'),
 (19, 'extensionattribute7', 'Something Custom', 999, 'FALSE', 'FALSE', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 'text', '', '', 'NONE', 'TRUE');
+
+
+
 CREATE TABLE IF NOT EXISTS `config` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(100) NOT NULL,
@@ -53,7 +63,7 @@ INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VA
 (2, 'ldap', 'base_dn', 'DC=james-lloyd,DC=com', 'DC=mydomain,DC=local', ''),
 (3, 'ldap', 'domain_controllers', '192.168.101.1', 'dc01.mydomain.local,dc02.mydomain.local', ''),
 (4, 'ldap', 'ad_username', 'Administrator', 'administrator', ''),
-(5, 'ldap', 'ad_password', 'password', 'your password', ''),
+(5, 'ldap', 'ad_password', 'password', 'your password set it here <a href="../install/password.php">SET PASSWORD</a>', ''),
 (6, 'ldap', 'real_primarygroup', 'true', 'true', ''),
 (7, 'ldap', 'use_ssl', 'FALSE', 'false', ''),
 (8, 'ldap', 'recursive_groups', 'true', 'true', ''),
@@ -65,6 +75,9 @@ INSERT INTO `config` (`id`, `type`, `name`, `value`, `example`, `validation`) VA
 (14, 'phpadadmin', 'admingroup', 'Domain Admins', 'Domain Admins ( the name of the group that has access to these page NULL for only you)', ''),
 (15, 'phpadadmin', 'forcehttps', 'false', 'true (Force connections over https)', ''),
 (16, 'ldap', 'exchangeinstalled', 'FALSE', 'TRUE (have you run the exchange schema update?, this will allow use of custom user attributes)', '');
+
+
+
 CREATE TABLE IF NOT EXISTS `errors` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(90) NOT NULL,
@@ -84,9 +97,30 @@ CREATE TABLE IF NOT EXISTS `formtype` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+
 INSERT INTO `formtype` (`id`, `value`, `name`) VALUES
 (1, 'text', 'Text'),
 (2, 'textbox', 'Text Box'),
 (3, 'radio', 'Radio'),
 (4, 'checkbox', 'Check Box'),
 (5, 'dropdown', 'Drop Down List');
+
+
+
+CREATE TABLE IF NOT EXISTS `validationtype` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `value` varchar(20) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+
+INSERT INTO `validationtype` (`id`, `value`, `name`) VALUES
+(1, 'NONE', 'No Validation'),
+(2, 'validate-alpha', 'Text Only'),
+(3, 'validate-digits', 'Numbers Only'),
+(4, 'validate-email', 'Email Address'),
+(6, 'validate-alphanum', 'Only Letters and numbers'),
+(7, 'validate-date', 'a valid date value'),
+(8, 'validate-url', 'A valid url');

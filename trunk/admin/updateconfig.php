@@ -6,6 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       $valuenames = _dbquery('SELECT `name` FROM '.$db_database.'.config WHERE `type` = \''.$_POST['formtype'].'\';',MYSQL_ASSOC,true);  
       foreach ($valuenames as $name)
         {
+         if ($name['name'] !== 'ad_password')  {
          if (isset($_POST[$name['name']])) {
              $sql = 'UPDATE `'.$db_database.'`.`config` 
                      SET `value` = \''.$_POST[$name['name']].'\' 
@@ -14,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             
             _dbupdate($sql); 
             }
+         }
         }
       
                                                  
