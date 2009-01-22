@@ -97,7 +97,8 @@ $_config = _completeconfig();
  </fieldset>
 <?php } ?> 
 <?php if (!isset($errorcount)) { ?>
-     <a href="../admin/configuration.php?config=ldap">Configure Ldap Settings</a>
+     <a href="password.php">Set Your AD Password</a>
+
 <?php } ?>
    
 <?php } else {?>

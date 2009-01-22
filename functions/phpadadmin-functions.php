@@ -21,10 +21,11 @@ function _html_pagetitle()
     }
 function _html_java()
     {
-     echo '<script src="'.PATH.'thirdparty/prototype.js" type="text/javascript"></script>'; 
-     echo '<script src="'.PATH.'thirdparty/scriptaculous.js" type="text/javascript"></script>';
-     echo '<script src="'.PATH.'thirdparty/validate.js" type="text/javascript"></script>';
-     echo '<script src="'.PATH.'thirdparty/fabtabulous.js" type="text/javascript"></script>';   
+     global $__path;
+    echo '<script src="'.PATH.'thirdparty/prototype.js" type="text/javascript"></script>';  
+    echo '<script src="'.PATH.'thirdparty/validate.js" type="text/javascript"></script>';
+    echo '<script src="'.PATH.'thirdparty/fabtabulous.js" type="text/javascript"></script>'; 
+    echo '<script src="'.PATH.'thirdparty/scriptaculous.js" type="text/javascript"></script>';     
     }
 function _html_css()
     {
@@ -60,7 +61,7 @@ function _phpadadmin_config_panel($name)
     <?php foreach($configs as $config) { ?>
      <div class="form-row">
       <div class="field-label"><label for="<?php echo $config['name'] ?>"><?php echo $config['name'] ?></label>:</div> 
-      <div class="field-widget"><input size="45" class="required <?php if (isset($config['validation'])) { echo $config['validation'] ; } ?>" id="<?php echo $config['name'] ?>"  type="<?php if ($config['name'] == 'ad_password') { ?>password<?php } else { ?>text<?php } ?>" name="<?php echo $config['name'] ?>" value="<?php echo $config['value'] ?>"> <em><?php echo $config['example'] ?></em></div>
+      <div class="field-widget"><input size="45" <?php if ($name == 'ldap' && $config['name'] == 'ad_password') { ?> DISABLED <?php } ?>class="required <?php if (isset($config['validation'])) { echo $config['validation'] ; } ?>" id="<?php echo $config['name'] ?>"  type="<?php if ($config['name'] == 'ad_password') { ?>password<?php } else { ?>text<?php } ?>" name="<?php echo $config['name'] ?>" value="<?php echo $config['value'] ?>"> <em><?php echo $config['example'] ?></em></div>
      </div>
      <input type="hidden" name="<?php echo $config['name'] ?>-id" value="<?php echo $config['id'] ?>">    
     <?php } ?> 

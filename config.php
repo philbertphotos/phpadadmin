@@ -6,5 +6,6 @@ $db_pass = "password"; // mysql Password
 $db_database = "phpadadmin"; // mysql Database Name
 $db_host = "localhost"; // mysql Server Hostname and port if you arnt using the default
 $administatoruser = "Administrator";  // Account that is allowed to access the config page
+$_phpadadmin_version = 'SVN Build!';    // you dont need to change this why would you ?
 ?>
  

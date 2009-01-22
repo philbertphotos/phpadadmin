@@ -6,4 +6,5 @@
     <?php _html_css() ?>       
 </head>
 <body>
-<div id="wrapper">
+<div id=wrapper>
+<div id=content>
