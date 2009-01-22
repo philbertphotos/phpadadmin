@@ -9,7 +9,7 @@ if (empty($_SERVER['LOGON_USER']) && $_SERVER['PHP_SELF'] != PATH.'error.php')
     } 
 require_once('functions/loadfunctions.php');
  
- 
+$__path = PATH;
 $_phpadadmin_version = 'SVN Build!'; 
 $_config = _completeconfig();
 
