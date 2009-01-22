@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once('../env.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
        echo '<pre>';print_r($_POST);echo '</pre>'; 
@@ -17,6 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         }
       
                                                  
-      header('Location: '.PATH.'admin/config.php?config='.$_POST['formtype'] ); 
+      header('Location: '.PATH.'admin/configuration.php?config='.$_POST['formtype'] ); 
     }
 ?>

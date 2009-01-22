@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('env.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
       echo mysql_escape_string($_POST['options']);

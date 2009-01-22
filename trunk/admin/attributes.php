@@ -1,4 +1,4 @@
-<?php require_once('../config.php') ?> 
+<?php require_once('../env.php') ?> 
 <?php include('../header.php') ?>
 <?php $attrs = _get_attributes(true);  ?>
 <div id="mainmenu"> 
@@ -116,4 +116,4 @@
  
  } ?>
 
-<?php include (INSTALLPATH.'footer.php');   ?>
+<?php include (INSTALLPATH.'templates/footer.php');   ?>
