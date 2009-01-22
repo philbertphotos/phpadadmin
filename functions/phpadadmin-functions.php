@@ -1,4 +1,20 @@
 <?php
+function _completeconfig()
+    {
+     global $db_database;
+     $completeconfig = _dbquery('SELECT `name`,`value`,`type` FROM '.$db_database.'.config ;',MYSQL_ASSOC);  
+       foreach ($completeconfig as $configitem)
+        {
+         if ($configitem['name'] == 'domain_controllers')
+            {
+             $value = explode (',',$configitem['value'])   ;
+            } else {
+            $value =  $configitem['value'];  
+            }
+         $_config[$configitem['type']][$configitem['name']]= $value;
+        }
+      return  $_config;          
+    }
 function _html_pagetitle() 
     {
      echo 'phpadadmin';   

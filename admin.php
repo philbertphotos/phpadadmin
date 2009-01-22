@@ -1,5 +1,5 @@
 <?php
- require_once('config.php');
+ require_once('env.php');
  
   $attrs = _dbquery('SELECT * FROM phpadadmin.attributes',MYSQL_ASSOC,false)    ;
  // $smarty->assign('pagetitle', 'testing');
@@ -104,4 +104,4 @@ include ('header.php');
                       </script>
  <?php $i++; } ?>
 
-<?php include ('footer.php');   ?>
+<?php include ('templates/footer.php');   ?>

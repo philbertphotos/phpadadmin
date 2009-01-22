@@ -1,4 +1,4 @@
-<?php require_once('config.php') ?>
+<?php require_once('env.php') ?>
 <?php require_once('functions/loadfunctions.php');  ?>   
 <?php include('header.php') ?>
 <?php
