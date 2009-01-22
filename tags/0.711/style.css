@@ -1,0 +1,159 @@
+body {
+    color: #333;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 76%;
+    text-align:center;
+    background-color: #Ccc;
+}
+#wrapper {
+    width:720px;
+    text-align:left;
+    margin-left:auto;
+    margin-right:auto;
+    background:#FFFFFF;
+    border:3px solid #34487E;
+}
+#header {
+    width:100%;
+    background:#34487E;
+}
+#header img { 
+    float:left;
+}
+#adminmenu { text-align:right;font-size:80%;height:36px;  }
+#adminmenu li {
+    display :inline;
+    color:#C5D1E1;
+    text-align:right;
+    padding-right:3px;
+}
+#adminmenu .help {
+  display:block;
+  font-weight:bold;
+  background-image: url(/images/icons/help.gif);
+  background-repeat: no-repeat;
+  background-position: left;
+  width: 40px;
+  float:right;
+  margin-top:2px;
+  height:20px;
+  vertical-align: middle;
+}
+#adminmenu li a { color:#C5D1E1;text-decoration:none; } 
+.clear { clear:both }    
+#menu { 
+    height: 22px;
+    background:#C5D1E1;
+    border-bottom: 2px solid #34487E;
+}
+#adminmenu ul,#menu ul { margin:0;padding:0; } 
+#menu li {
+    background:#34487E;
+    margin-top:1px;
+    margin-left:1px;
+    font-size:80%;
+        float:left;
+        display:block;
+        height:15px;
+        width:120px;
+        border: 2px solid #ddd;
+        text-align:center;
+}
+#menu li a { color:white; text-decoration: none;}
+#menu li:hover {border: 2px solid #888; } 
+#content {
+    margin:10px;
+}
+#footer {
+    text-align:center;
+    margin-top:3px;
+    padding:3px;
+    border: 3px solid #CCC;
+}
+.panel {
+    clear: both;
+    display: none;
+    border: 3px solid #CCC;
+    padding: 1em;
+}
+.panel.active-tab-body {
+    display: block;
+}
+#tabs {
+    list-style: none;
+}
+
+#tabs li {
+    float: left;
+}
+
+#tabs a {
+    float: left;
+    padding: 5px 8px;
+    margin-left: 6px;
+    background-color: #F2F2F2;
+    text-decoration: none;
+    color: #999999;
+}
+
+#tabs a.active-tab {
+    background-color: #CCC;
+    border-top: 3px solid #999;
+    padding-top: 3px;
+    color: #000;
+}
+input.disabled {
+    border: 1px solid #F2F2F2;
+    background-color: #F2F2F2;
+}
+
+input.required, textarea.required {
+    border: 1px solid #00A8E6;
+}
+input.validation-failed, textarea.validation-failed {
+    border: 1px solid #FF3300;
+    color : #FF3300;
+}
+input.validation-passed, textarea.validation-passed {
+    border: 1px solid #00CC00;
+    color : #000;
+}
+
+.validation-advice {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #FF3300;
+    color : #FFF;
+    font-weight: bold;
+}
+
+.custom-advice {
+    margin: 5px 0;
+    padding: 5px;
+    background-color: #C8AA00;
+    color : #FFF;
+    font-weight: bold;
+}
+
+fieldset {
+    padding: 1em;
+    margin-bottom: 0.5em;
+}
+
+label {
+    font-weight: bold;
+}
+.form-row {
+    clear: both;
+    padding: 0.3em;
+}
+
+.field-label {
+   
+}
+
+.field-widget {
+ 
+}
+
